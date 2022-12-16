@@ -14,6 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // calling additional seeder to fill Legals and Grades
+        $this->call([DictionarySeeder::class]);
+
+        // calling additional seeder to fill the rest of the table with standard entries
+        $this->call([RestSeeder::class]);
+
+        // calling additional seeder to fill only the Deliveries table
+        // $this->call([DeliverySeeder::class]);
+
+
+
+
+
+
+
+
+
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('trademarks', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('patronym');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('title', 4095);
+            $table->foreignId('company_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('grade_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->text('ingredients');
+            $table->unsignedInteger('weight');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('trademarks');
     }
 };
