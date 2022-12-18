@@ -13,10 +13,4 @@ class SettlementController extends Controller
             'settlements' => Settlement::latest()->paginate(40)
         ]);
     }
-
-    public function show(Settlement $settlement) {
-        return view('entries.settlements.show', [
-            'settlement' => $settlement
-        ]);
-    }
 }

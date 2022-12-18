@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LegalController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettlementController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\TrademarkController;
+use App\Http\Controllers\UserController;
+use App\Models\Trademark;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,19 +49,19 @@ Route::group(['prefix' => '{locale}'], function () {
 
     Route::get('/settlements', [SettlementController::class, 'index'])->name('settlements');
 
-    Route::get('/legals', [SettlementController::class, 'index'])->name('legals');
+    Route::get('/legals', [LegalController::class, 'index'])->name('legals');
 
-    Route::get('/grades', [SettlementController::class, 'index'])->name('grades');
+    Route::get('/grades', [GradeController::class, 'index'])->name('grades');
 
     Route::get('/districts', [DistrictController::class, 'index'])->name('districts');
 
-    Route::get('/companies', [SettlementController::class, 'index'])->name('companies');
+    Route::get('/companies', [CompanyController::class, 'index'])->name('companies');
 
-    Route::get('/users', [SettlementController::class, 'index'])->name('users');
+    Route::get('/users', [UserController::class, 'index'])->name('users');
 
-    Route::get('/shops', [SettlementController::class, 'index'])->name('shops');
+    Route::get('/shops', [ShopController::class, 'index'])->name('shops');
 
-    Route::get('/deliveries', [SettlementController::class, 'index'])->name('deliveries');
+    Route::get('/deliveries', [DeliveryController::class, 'index'])->name('deliveries');
 
-    Route::get('/trademarks', [SettlementController::class, 'index'])->name('trademarks');
+    Route::get('/trademarks', [TrademarkController::class, 'index'])->name('trademarks');
 });

@@ -3,7 +3,7 @@
 @props(['districts'])
 
 @section('title')
-    {{ __('messages.header-home')}}
+    {{ __('messages.header-districts')}}
 @endsection
 
 @section('content')
@@ -12,24 +12,10 @@
         @foreach ($districts as $district)
             <a href="">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
-                    {{-- title --}}
-                    <div class="flex">
-                        <span class="text-right pr-1">
-                            {{ __('messages.field-title') }}:
-                        </span>
-                        <span class="font-semibold truncate" title="{{$district->title}}">
-                            {{$district->title}}
-                        </span>
-                    </div>
-                    {{-- settlement title --}}
-                    <div class="flex">
-                        <span class="text-right pr-1">
-                            {{ __('messages.field-settlement') }}:
-                        </span>
-                        <span class="font-semibold truncate" title="{{$district->settlement->title}}">
-                            {{$district->settlement->title}}
-                        </span>
-                    </div>
+
+                    @include('components.colout', ['entity' => $district, 'colname' => __('messages.field-title'), 'goal' => $district->title])
+                    @include('components.colout', ['entity' => $district, 'colname' => __('messages.field-settlement'), 'goal' => $district->settlement->title])
+                    
                 </div>
             </a>
         @endforeach
