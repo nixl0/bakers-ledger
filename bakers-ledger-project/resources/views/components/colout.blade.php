@@ -4,7 +4,7 @@
     <span class="text-right pr-1">
         {{$colname}}:
     </span>
-    <span class="font-semibold truncate" title="{{$entity->$goal}}">
+    <span class="font-semibold truncate" title="{{$goal}}">
         {{$goal}}
     </span>
 </div>

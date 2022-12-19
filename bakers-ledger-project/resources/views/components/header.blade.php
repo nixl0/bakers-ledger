@@ -1,4 +1,4 @@
-<div class="flex shadow-md">
+<div class="flex shadow-md justify-center">
     <header class="flex justify-center flex-wrap drop-shadow-md">
         <a href="{{ route('home', app()->getLocale()) }}" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">
             <span class="font-bold">
