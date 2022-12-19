@@ -3,31 +3,32 @@
 @props(['companies'])
 
 @section('title')
-    {{ __('messages.header-companies')}}
+    Предприятия
 @endsection
 
 @section('content')
 <div class="m-4 px-4">
+
     <div class="py-4">
         {{ $companies->links() }}
     </div>
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
         @foreach ($companies as $company)
-            <a href="">
+            <a href="/companies/{{ $company->id }}">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-number'), 'goal' => $company->number])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-legal'), 'goal' => $company->legal->title])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-title'), 'goal' => $company->title])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-district'), 'goal' => $company->district->title])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-settlement'), 'goal' => $company->district->settlement->title])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-since'), 'goal' => $company->since])
-                    @include('components.colout', ['entity' => $company, 'colname' => __('messages.field-email'), 'goal' => $company->email])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'номер', 'goal' => $company->number])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'тип собственности', 'goal' => $company->legal->title])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'название', 'goal' => $company->title])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'район', 'goal' => $company->district->title])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'город', 'goal' => $company->district->settlement->title])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'год основания', 'goal' => $company->since])
+                    @include('components.colout', ['entity' => $company, 'colname' => 'email', 'goal' => $company->email])
 
                     {{-- users --}}
                     <div class="flex">
                         <span class="text-right pr-1">
-                            {{ __('messages.field-users') }}:
+                            пользователи:
                         </span>
                         <span class="font-semibold truncate">
                             @foreach ($company->users as $user)

@@ -25,45 +25,38 @@ use App\Models\Trademark;
 */
 
 
-// Route::get('/settlements', [SettlementController::class, 'index']);
 
-// Route::get('/{locale}', function ($locale) {
-//     if (! in_array($locale, ['en', 'ru'])) {
-//         abort(400);
-//     }
-
-//     App::setlocale($locale);
-//     return view('home');
-// });
-
-Route::redirect('/', '/ru');
-
-Route::group(['prefix' => '{locale}'], function () {
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
-
-    Route::get('/queries', function () {
-        return view('queries');
-    })->name('queries');
-
-    Route::get('/settlements', [SettlementController::class, 'index'])->name('settlements');
-
-    Route::get('/legals', [LegalController::class, 'index'])->name('legals');
-
-    Route::get('/grades', [GradeController::class, 'index'])->name('grades');
-
-    Route::get('/districts', [DistrictController::class, 'index'])->name('districts');
-
-    Route::get('/companies', [CompanyController::class, 'index'])->name('companies');
-
-    Route::get('/users', [UserController::class, 'index'])->name('users');
-
-    Route::get('/shops', [ShopController::class, 'index'])->name('shops');
-
-    Route::get('/deliveries', [DeliveryController::class, 'index'])->name('deliveries');
-
-    Route::get('/trademarks', [TrademarkController::class, 'index'])->name('trademarks');
+Route::get('/', function () {
+    return view('home');
 });
 
+Route::get('/queries', function () {
+    return view('queries');
+});
+
+Route::get('/settlements/{settlement}', [SettlementController::class, 'show']);
 Route::get('/settlements', [SettlementController::class, 'index']);
+
+Route::get('/legals/{legal}', [LegalController::class, 'show']);
+Route::get('/legals', [LegalController::class, 'index']);
+
+Route::get('/grades/{grade}', [GradeController::class, 'show']);
+Route::get('/grades', [GradeController::class, 'index']);
+
+Route::get('/districts/{district}', [DistrictController::class, 'show']);
+Route::get('/districts', [DistrictController::class, 'index']);
+
+Route::get('/companies/{company}', [CompanyController::class, 'show']);
+Route::get('/companies', [CompanyController::class, 'index']);
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/shops/{shop}', [ShopController::class, 'show']);
+Route::get('/shops', [ShopController::class, 'index']);
+
+Route::get('/deliveries/{delivery}', [DeliveryController::class, 'show']);
+Route::get('/deliveries', [DeliveryController::class, 'index']);
+
+Route::get('/trademarks/{trademark}', [TrademarkController::class, 'show']);
+Route::get('/trademarks', [TrademarkController::class, 'index']);

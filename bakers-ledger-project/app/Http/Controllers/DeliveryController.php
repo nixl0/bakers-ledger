@@ -10,7 +10,14 @@ class DeliveryController extends Controller
     public function index()
     {
         return view('entries.deliveries.index', [
-            'deliveries' => Delivery::latest()->paginate(40)
+            'deliveries' => Delivery::latest()->orderBy('id', 'desc')->paginate(40)
+        ]);
+    }
+
+    public function show(Delivery $delivery)
+    {
+        return view('entries.deliveries.show', [
+            'delivery' => $delivery
         ]);
     }
 }

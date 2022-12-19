@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-    {{ __('messages.header-home') }}
+    Главная
 @endsection
 
 @section('content')

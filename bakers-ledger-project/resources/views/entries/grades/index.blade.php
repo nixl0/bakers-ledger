@@ -3,7 +3,7 @@
 @props(['grades'])
 
 @section('title')
-    {{ __('messages.header-grades')}}
+    Сорта муки
 @endsection
 
 @section('content')
@@ -14,9 +14,9 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
         @foreach ($grades as $grade)
-            <a href="">
+            <a href="/grades/{{ $grade->id }}">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
-                    @include('components.colout', ['entity' => $grade, 'colname' => __('messages.field-title'), 'goal' => $grade->title])
+                    @include('components.colout', ['entity' => $grade, 'colname' => 'название', 'goal' => $grade->title])
                 </div>
             </a>
         @endforeach

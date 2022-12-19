@@ -10,7 +10,14 @@ class LegalController extends Controller
     public function index()
     {
         return view('entries.legals.index', [
-            'legals' => Legal::latest()->paginate(40)
+            'legals' => Legal::latest()->orderBy('id', 'desc')->paginate(40)
+        ]);
+    }
+
+    public function show(Legal $legal)
+    {
+        return view('entries.legals.show', [
+            'legal' => $legal
         ]);
     }
 }

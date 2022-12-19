@@ -3,7 +3,7 @@
 @props(['legals'])
 
 @section('title')
-    {{ __('messages.header-legals')}}
+    Типы собственности
 @endsection
 
 @section('content')
@@ -14,9 +14,9 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
         @foreach ($legals as $legal)
-            <a href="">
+            <a href="/legals/{{ $legal->id }}">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
-                    @include('components.colout', ['entity' => $legal, 'colname' => __('messages.field-title'), 'goal' => $legal->title])
+                    @include('components.colout', ['entity' => $legal, 'colname' => 'название', 'goal' => $legal->title])
                 </div>
             </a>
         @endforeach

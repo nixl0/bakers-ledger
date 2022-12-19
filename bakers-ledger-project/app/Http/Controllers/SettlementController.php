@@ -10,7 +10,14 @@ class SettlementController extends Controller
     public function index()
     {
         return view('entries.settlements.index', [
-            'settlements' => Settlement::latest()->paginate(40)
+            'settlements' => Settlement::latest()->orderBy('id', 'desc')->paginate(40)
+        ]);
+    }
+
+    public function show(Settlement $settlement)
+    {
+        return view('entries.settlements.show', [
+            'settlement' => $settlement
         ]);
     }
 }

@@ -3,7 +3,7 @@
 @props(['settlements'])
 
 @section('title')
-    {{ __('messages.header-settlements')}}
+    Города
 @endsection
 
 @section('content')
@@ -14,9 +14,9 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
         @foreach ($settlements as $settlement)
-            <a href="">
+            <a href="/settlements/{{ $settlement->id }}">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
-                    @include('components.colout', ['entity' => $settlement, 'colname' => __('messages.field-title'), 'goal' => $settlement->title])
+                    @include('components.colout', ['entity' => $settlement, 'colname' => 'название', 'goal' => $settlement->title])
                 </div>
             </a>
         @endforeach

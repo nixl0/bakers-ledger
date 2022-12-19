@@ -3,7 +3,7 @@
 @props(['trademarks'])
 
 @section('title')
-    {{ __('messages.header-trademarks')}}
+    Торговые марки
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
         @foreach ($trademarks as $trademark)
-            <a href="">
+            <a href="/trademarks/{{ $trademark->id }}">
                 <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
 
-                    @include('components.colout', ['entity' => $trademark, 'colname' => __('messages.field-title'), 'goal' => $trademark->title])
-                    @include('components.colout', ['entity' => $trademark, 'colname' => __('messages.field-legal'), 'goal' => $trademark->company->legal->title])
-                    @include('components.colout', ['entity' => $trademark, 'colname' => __('messages.field-company'), 'goal' => $trademark->company->title])
-                    @include('components.colout', ['entity' => $trademark, 'colname' => __('messages.field-grade'), 'goal' => $trademark->grade->title])
-                    @include('components.colout', ['entity' => $trademark, 'colname' => __('messages.field-ingredients'), 'goal' => $trademark->ingredients])
+                    @include('components.colout', ['entity' => $trademark, 'colname' => 'название', 'goal' => $trademark->title])
+                    @include('components.colout', ['entity' => $trademark, 'colname' => 'тип собственности', 'goal' => $trademark->company->legal->title])
+                    @include('components.colout', ['entity' => $trademark, 'colname' => 'предприятие', 'goal' => $trademark->company->title])
+                    @include('components.colout', ['entity' => $trademark, 'colname' => 'сорт муки', 'goal' => $trademark->grade->title])
+                    @include('components.colout', ['entity' => $trademark, 'colname' => 'ингредиенты', 'goal' => $trademark->ingredients])
 
                 </div>
             </a>

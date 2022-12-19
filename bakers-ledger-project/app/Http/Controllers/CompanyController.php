@@ -10,7 +10,14 @@ class CompanyController extends Controller
     public function index()
     {
         return view('entries.companies.index', [
-            'companies' => Company::latest()->paginate(40)
+            'companies' => Company::latest()->orderBy('id', 'desc')->paginate(40)
+        ]);
+    }
+
+    public function show(Company $company)
+    {
+        return view('entries.companies.show', [
+            'company' => $company
         ]);
     }
 }
