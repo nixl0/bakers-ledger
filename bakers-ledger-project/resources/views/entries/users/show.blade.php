@@ -32,5 +32,7 @@
             </p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/users/' . $users->id ])
 </div>
 @endsection

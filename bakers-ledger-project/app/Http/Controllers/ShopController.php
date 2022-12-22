@@ -20,4 +20,9 @@ class ShopController extends Controller
             'shop' => $shop
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.shops.create');
+    }
 }

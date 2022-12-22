@@ -1,14 +1,16 @@
 @extends('base')
 
-@props(['grades'])
+@props(['shops'])
 
 @section('title')
     Магазины
 @endsection
 
 @section('content')
-<div class="m-4">
-    <div class="py-4 px-4">
+<div class="m-4 px-4">
+    @include('components.create-entry', ['href' => '/shops/create'])
+
+    <div class="py-4">
         {{ $shops->links() }}
     </div>
 

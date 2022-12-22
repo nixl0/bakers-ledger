@@ -9,6 +9,8 @@ class Grade extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function trademarks()
     {
         return $this->hasMany(Trademark::class);

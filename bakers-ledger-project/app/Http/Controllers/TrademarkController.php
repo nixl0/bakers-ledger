@@ -20,4 +20,9 @@ class TrademarkController extends Controller
             'trademark' => $trademark
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.trademarks.create');
+    }
 }

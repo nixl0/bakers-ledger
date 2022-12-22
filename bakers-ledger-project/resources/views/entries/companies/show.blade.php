@@ -38,5 +38,7 @@
             </p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/companies/' . $company->id ])
 </div>
 @endsection

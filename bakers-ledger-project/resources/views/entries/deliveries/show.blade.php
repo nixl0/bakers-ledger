@@ -33,5 +33,7 @@
             <p>{{$delivery->date}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/deliveries/' . $delivery->id ])
 </div>
 @endsection

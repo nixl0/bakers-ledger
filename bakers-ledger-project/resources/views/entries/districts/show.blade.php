@@ -21,5 +21,7 @@
             <p>{{$district->settlement->title}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/districts/' . $district->id ])
 </div>
 @endsection

@@ -19,5 +19,7 @@
             <p>{{$grade->title}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/grades/' . $grade->id ])
 </div>
 @endsection

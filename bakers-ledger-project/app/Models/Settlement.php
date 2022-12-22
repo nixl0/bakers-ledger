@@ -9,6 +9,8 @@ class Settlement extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function districts()
     {
         return $this->hasMany(District::class);

@@ -9,6 +9,8 @@
 @section('content')
 <div class="m-4 px-4">
 
+    @include('components.create-entry', ['href' => '/companies/create'])
+
     <div class="py-4">
         {{ $companies->links() }}
     </div>

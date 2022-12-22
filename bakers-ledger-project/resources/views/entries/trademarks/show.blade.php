@@ -27,5 +27,7 @@
             <p>{{$trademark->ingredients}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/trademarks/' . $trademark->id ])
 </div>
 @endsection

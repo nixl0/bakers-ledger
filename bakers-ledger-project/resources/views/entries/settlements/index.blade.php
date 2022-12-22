@@ -8,6 +8,8 @@
 
 @section('content')
 <div class="m-4 px-4">
+    @include('components.create-entry', ['href' => '/settlements/create'])
+
     <div class="py-4">
         {{ $settlements->links() }}
     </div>

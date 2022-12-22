@@ -20,4 +20,43 @@ class SettlementController extends Controller
             'settlement' => $settlement
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.settlements.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required'
+        ]);
+
+        Settlement::create($validated);
+
+        return redirect('/settlements')->with('message', 'Город успешно добавлен');
+    }
+
+    public function edit(Settlement $settlement)
+    {
+        return view('entries.settlements.edit', ['settlement' => $settlement]);
+    }
+
+    public function update(Request $request, Settlement $settlement)
+    {
+        $validated = $request->validate([
+            'title' => 'required'
+        ]);
+
+        $settlement->update($validated);
+
+        return redirect('/settlements')->with('message', 'Город успешно изменён');
+    }
+
+    public function destroy(Settlement $settlement)
+    {
+        $settlement->delete();
+
+        return redirect('/settlements')->with('message', 'Город успешно удалён');
+    }
 }

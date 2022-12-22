@@ -20,4 +20,9 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.users.create');
+    }
 }

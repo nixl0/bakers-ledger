@@ -9,6 +9,8 @@ class District extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'settlement_id'];
+
     public function settlement()
     {
         return $this->belongsTo(Settlement::class);

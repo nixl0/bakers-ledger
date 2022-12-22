@@ -29,5 +29,7 @@
             <p>{{$shop->phone}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/shops/' . $shop->id ])
 </div>
 @endsection

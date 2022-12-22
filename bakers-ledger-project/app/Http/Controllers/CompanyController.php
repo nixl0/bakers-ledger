@@ -20,4 +20,9 @@ class CompanyController extends Controller
             'company' => $company
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.companies.create');
+    }
 }

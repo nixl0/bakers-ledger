@@ -19,5 +19,7 @@
             <p>{{$settlement->title}}</p>
         </div>
     </div>
+
+    @include('components.edit-delete-buttons', ['href' => '/settlements/' . $settlement->id ])
 </div>
 @endsection

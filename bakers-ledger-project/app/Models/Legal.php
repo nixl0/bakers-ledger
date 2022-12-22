@@ -9,6 +9,8 @@ class Legal extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function companies()
     {
         return $this->hasMany(Company::class);

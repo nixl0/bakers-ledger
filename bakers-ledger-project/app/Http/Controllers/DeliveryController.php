@@ -20,4 +20,9 @@ class DeliveryController extends Controller
             'delivery' => $delivery
         ]);
     }
+
+    public function create()
+    {
+        return view('entries.deliveries.create');
+    }
 }
