@@ -1,6 +1,6 @@
 @extends('base')
 
-@props(['users'])
+@props(['user'])
 
 @section('title')
     {{$user->name}}
@@ -25,14 +25,20 @@
             <p>{{$user->first_name}}</p>
             <p>{{$user->patronym}}</p>
 
-            <p>
-                @foreach ($user->companies as $company)
-                    {{$company->title}}
-                @endforeach
-            </p>
+            @if (count($user->companies))
+                <p>
+                    @foreach ($user->companies as $company)
+                        {{$company->title}}
+                    @endforeach
+                </p>
+            @else
+                <p class="text-red-500">
+                    * предприятия не указаны *
+                </p>
+            @endif
         </div>
     </div>
 
-    @include('components.edit-delete-buttons', ['href' => '/users/' . $users->id ])
+    @include('components.edit-delete-buttons', ['href' => '/users/' . $user->id ])
 </div>
 @endsection
