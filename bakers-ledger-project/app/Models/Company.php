@@ -9,6 +9,8 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['number', 'title', 'district_id', 'legal_id', 'since', 'phone', 'email'];
+
     public function district()
     {
         return $this->belongsTo(District::class);

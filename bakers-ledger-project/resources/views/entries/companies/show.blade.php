@@ -3,7 +3,7 @@
 @props(['company'])
 
 @section('title')
-    {{$company->legal->title}}
+    {{$company->title}}
 @endsection
 
 @section('content')
@@ -19,6 +19,7 @@
             <p>район:</p>
             <p>город:</p>
             <p>год основания:</p>
+            <p>телефон:</p>
             <p>email:</p>
             <p>пользователи:</p>
         </div>
@@ -29,13 +30,20 @@
             <p>{{$company->district->title}}</p>
             <p>{{$company->district->settlement->title}}</p>
             <p>{{$company->since}}</p>
+            <p>{{$company->phone}}</p>
             <p>{{$company->email}}</p>
 
-            <p>
-                @foreach ($company->users as $user)
-                    {{$user->name}}
-                @endforeach
-            </p>
+            @if (count($company->users))
+                <p>
+                    @foreach ($company->users as $user)
+                        {{$user->name}}
+                    @endforeach
+                </p>
+            @else
+                <p class="text-red-500">
+                    * пользователи не указаны *
+                </p>
+            @endif
         </div>
     </div>
 

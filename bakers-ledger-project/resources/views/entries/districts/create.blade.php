@@ -33,7 +33,7 @@
                 <label for="settlement_id" class="">
                     город
                 </label>
-                <input list="settlements" name="settlement_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('title') }}">
+                <input list="settlements" name="settlement_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('settlement_id') }}">
                 <datalist id="settlements">
                     @foreach ($settlements as $settlement)
                         <option value="{{ $settlement->id }}" label="{{ $settlement->title }}" />
