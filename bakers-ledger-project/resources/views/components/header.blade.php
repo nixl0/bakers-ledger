@@ -35,9 +35,9 @@
                 Предприятия
             </span>
         </a>
-        <a href="/users" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">
+        <a href="/owners" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">
             <span class="">
-                Пользователи
+                Владельцы
             </span>
         </a>
         <a href="/shops" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">

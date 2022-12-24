@@ -21,9 +21,9 @@ class Company extends Model
         return $this->belongsTo(Legal::class);
     }
 
-    public function users()
+    public function owners()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Owner::class);
     }
 
     public function trademarks()

@@ -1,9 +1,9 @@
 @extends('base')
 
-@props(['user'])
+@props(['owner'])
 
 @section('title')
-    {{$user->name}}
+    {{ $owner->lastname . ' ' . $owner->firstname }}
 @endsection
 
 @section('content')
@@ -13,21 +13,19 @@
 
     <div class="border shadow-xl rounded-md p-8 flex flex-row justify-center">
         <div class="flex flex-col justify-between space-y-4 pr-4 text-right">
-            <p>юзернейм:</p>
             <p>фамилия:</p>
             <p>имя:</p>
             <p>отчество:</p>
             <p>предприятия:</p>
         </div>
         <div class="flex flex-col justify-between space-y-4 font-bold">
-            <p>{{$user->name}}</p>
-            <p>{{$user->last_name}}</p>
-            <p>{{$user->first_name}}</p>
-            <p>{{$user->patronym}}</p>
+            <p>{{$owner->lastname}}</p>
+            <p>{{$owner->firstname}}</p>
+            <p>{{$owner->patronym}}</p>
 
-            @if (count($user->companies))
+            @if (count($owner->companies))
                 <p>
-                    @foreach ($user->companies as $company)
+                    @foreach ($owner->companies as $company)
                         {{$company->title}}
                     @endforeach
                 </p>
@@ -39,6 +37,6 @@
         </div>
     </div>
 
-    @include('components.edit-delete-buttons', ['href' => '/users/' . $user->id ])
+    @include('components.edit-delete-buttons', ['href' => '/owners/' . $owner->id ])
 </div>
 @endsection

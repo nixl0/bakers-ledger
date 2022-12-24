@@ -23,16 +23,16 @@ class RestSeeder extends Seeder
         // Shops
         \App\Models\Shop::factory(5000)->create();
 
-        // User
-        // \App\Models\User::factory(200)->create();
+        // Owner
+        // \App\Models\Owner::factory(200)->create();
 
         // Company
         // \App\Models\Company::factory(50)->create();
 
-        // Company & User, each one and many-to-many in between
+        // Company & Owner, each one and many-to-many in between
         // 50 companies, and for each 4 more users of it, are generated
         \App\Models\Company::factory(2000)
-            ->has(\App\Models\User::factory()->count(4))
+            ->has(\App\Models\Owner::factory()->count(4))
             ->create();
 
         \App\Models\Trademark::factory(6000)->create();

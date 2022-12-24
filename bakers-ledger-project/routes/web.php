@@ -5,12 +5,12 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\OwnerController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TrademarkController;
-use App\Http\Controllers\UserController;
 use App\Models\Trademark;
 
 /*
@@ -74,13 +74,13 @@ Route::put('/companies/{company}', [CompanyController::class, 'update']);
 Route::delete('/companies/{company}', [CompanyController::class, 'destroy']);
 Route::get('/companies/{company}', [CompanyController::class, 'show']);
 
-Route::get('/users/create', [UserController::class, 'create']);
-Route::post('/users', [UserController::class, 'store']);
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{user}/edit', [UserController::class, 'edit']);
-Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/{user}', [UserController::class, 'destroy']);
-Route::get('/users/{user}', [UserController::class, 'show']);
+Route::get('/owners/create', [OwnerController::class, 'create']);
+Route::post('/owners', [OwnerController::class, 'store']);
+Route::get('/owners', [OwnerController::class, 'index']);
+Route::get('/owners/{owner}/edit', [OwnerController::class, 'edit']);
+Route::put('/owners/{owner}', [OwnerController::class, 'update']);
+Route::delete('/owners/{owner}', [OwnerController::class, 'destroy']);
+Route::get('/owners/{owner}', [OwnerController::class, 'show']);
 
 Route::get('/shops/create', [ShopController::class, 'create']);
 Route::post('/shops', [ShopController::class, 'store']);

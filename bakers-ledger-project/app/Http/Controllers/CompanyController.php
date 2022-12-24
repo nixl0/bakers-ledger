@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\District;
 use App\Models\Legal;
+use App\Models\Owner;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class CompanyController extends Controller
         return view('entries.companies.create', [
             'districts' => District::all(),
             'legals' => Legal::all(),
-            'users' => User::all()
+            'owners' => Owner::all()
         ]);
     }
 
@@ -57,7 +58,7 @@ class CompanyController extends Controller
             'company' => $company,
             'districts' => District::all(),
             'legals' => Legal::all(),
-            'users' => User::all()
+            'owners' => Owner::all()
         ]);
     }
 

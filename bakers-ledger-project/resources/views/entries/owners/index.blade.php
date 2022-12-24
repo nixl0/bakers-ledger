@@ -1,28 +1,27 @@
 @extends('base')
 
-@props(['users'])
+@props(['owners'])
 
 @section('title')
-    Пользователи
+    Владельцы
 @endsection
 
 @section('content')
     <div class="m-4 px-4">
-        @include('components.create-entry', ['href' => '/users/create'])
+        @include('components.create-entry', ['href' => '/owners/create'])
 
         <div class="py-4">
-            {{ $users->links() }}
+            {{ $owners->links() }}
         </div>
 
         <div class="grid sm:grid-cols-2 md:grid-cols-4 justify-center">
-            @foreach ($users as $user)
-                <a href="/users/{{ $user->id }}">
+            @foreach ($owners as $owner)
+                <a href="/owners/{{ $owner->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 drop-shadow-md">
 
-                        @include('components.colout', ['entity' => $user, 'colname' => 'юзернейм', 'goal' => $user->name])
-                        @include('components.colout', ['entity' => $user, 'colname' => 'фамилия', 'goal' => $user->last_name])
-                        @include('components.colout', ['entity' => $user, 'colname' => 'имя', 'goal' => $user->first_name])
-                        @include('components.colout', ['entity' => $user, 'colname' => 'отчество', 'goal' => $user->patronym])
+                        @include('components.colout', ['entity' => $owner, 'colname' => 'фамилия', 'goal' => $owner->lastname])
+                        @include('components.colout', ['entity' => $owner, 'colname' => 'имя', 'goal' => $owner->firstname])
+                        @include('components.colout', ['entity' => $owner, 'colname' => 'отчество', 'goal' => $owner->patronym])
 
                         {{-- companies --}}
                         <div class="flex">
@@ -30,7 +29,7 @@
                                 предприятия:
                             </span>
                             <span class="font-semibold truncate">
-                                @foreach ($user->companies as $company)
+                                @foreach ($owner->companies as $company)
                                     <p>
                                         <span>{{ $company->legal->title }}</span>
                                         <span>{{ $company->title }}</span>
@@ -44,7 +43,7 @@
         </div>
 
         <div class="py-4">
-            {{ $users->links() }}
+            {{ $owners->links() }}
         </div>
     </div>
 @endsection

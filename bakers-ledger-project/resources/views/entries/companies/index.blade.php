@@ -27,14 +27,14 @@
                     @include('components.colout', ['entity' => $company, 'colname' => 'год основания', 'goal' => $company->since])
                     @include('components.colout', ['entity' => $company, 'colname' => 'email', 'goal' => $company->email])
 
-                    {{-- users --}}
+                    {{-- owners --}}
                     <div class="flex">
                         <span class="text-right pr-1">
-                            пользователи:
+                            владельцы:
                         </span>
                         <span class="font-semibold truncate">
-                            @foreach ($company->users as $user)
-                                <p>{{ $user->name }}</p>
+                            @foreach ($company->owners as $owner)
+                                <p>{{ $owner->lastname }} {{ $owner->firstname }}</p>
                             @endforeach
                         </span>
                     </div>

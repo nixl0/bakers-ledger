@@ -21,7 +21,7 @@
             <p>год основания:</p>
             <p>телефон:</p>
             <p>email:</p>
-            <p>пользователи:</p>
+            <p>владельцы:</p>
         </div>
         <div class="flex flex-col justify-between space-y-4 font-bold">
             <p>{{$company->number}}</p>
@@ -33,15 +33,15 @@
             <p>{{$company->phone}}</p>
             <p>{{$company->email}}</p>
 
-            @if (count($company->users))
+            @if (count($company->owners))
                 <p>
-                    @foreach ($company->users as $user)
-                        {{$user->name}}
+                    @foreach ($company->owners as $owner)
+                        {{$owner->lastname}} {{$owner->firstname}},
                     @endforeach
                 </p>
             @else
                 <p class="text-red-500">
-                    * пользователи не указаны *
+                    * владельцы не указаны *
                 </p>
             @endif
         </div>
