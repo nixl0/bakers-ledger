@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,53 @@ class ShopController extends Controller
 
     public function create()
     {
-        return view('entries.shops.create');
+        return view('entries.shops.create', [
+            'districts' => District::all()
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'number' => 'required',
+            'title' => 'required',
+            'district_id' => 'required',
+            'address' => 'required',
+            'phone' => 'required'
+        ]);
+
+        Shop::create($validated);
+
+        return redirect('/shops')->with('message', 'Магазин успешно добавлен');
+    }
+
+    public function edit(Shop $shop)
+    {
+        return view('entries.shops.edit', [
+            'shop' => $shop,
+            'districts' => District::all()
+        ]);
+    }
+
+    public function update(Request $request, Shop $shop)
+    {
+        $validated = $request->validate([
+            'number' => 'required',
+            'title' => 'required',
+            'district_id' => 'required',
+            'address' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $shop->update($validated);
+
+        return redirect('/shops')->with('message', 'Магазин успешно изменён');
+    }
+
+    public function destroy(Shop $shop)
+    {
+        $shop->delete();
+
+        return redirect('/shops')->with('message', 'Магазин успешно удалён');
     }
 }

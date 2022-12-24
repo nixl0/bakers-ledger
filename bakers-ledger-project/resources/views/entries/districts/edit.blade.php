@@ -3,7 +3,7 @@
 @props(['district', 'settlements'])
 
 @section('title')
-    Редактировать район
+    Изменить район
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
             @csrf
             @method('PUT')
 
-            <h1 class="text-2xl font-bold text-center">Редактировать район</h1>
+            <h1 class="text-2xl font-bold text-center">Изменить район</h1>
 
             {{-- title --}}
             <div class="flex items-center space-x-2">

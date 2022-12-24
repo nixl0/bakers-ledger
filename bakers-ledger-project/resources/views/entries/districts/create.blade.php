@@ -40,7 +40,7 @@
                     @endforeach
                 </datalist>
             </div>
-            @error('title')
+            @error('settlement_id')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>

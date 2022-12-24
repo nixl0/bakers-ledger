@@ -9,6 +9,8 @@ class Trademark extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'company_id', 'grade_id', 'ingredients', 'weight'];
+
     public function grade()
     {
         return $this->belongsTo(Grade::class);
