@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // calling additional seeder to fill Users
+        $this->call([UserSeeder::class]);
+
         // calling additional seeder to fill Legals and Grades
         $this->call([DictionarySeeder::class]);
 

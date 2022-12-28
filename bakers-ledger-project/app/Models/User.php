@@ -26,6 +26,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public const IS_READER = 1;
+    public const IS_ADMIN = 2;
+    public const IS_MANAGER = 3;
+    public const IS_DELIVERER = 4;
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,6 +52,46 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->belongsToMany(Company::class);
+        return $this->hasMany(Company::class);
+    }
+
+    public function deliveries()
+    {
+        return $this->hasMany(Delivery::class);
+    }
+
+    public function districts()
+    {
+        return $this->hasMany(District::class);
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function legals()
+    {
+        return $this->hasMany(Legal::class);
+    }
+
+    public function owners()
+    {
+        return $this->hasMany(Owner::class);
+    }
+
+    public function settlements()
+    {
+        return $this->hasMany(Settlement::class);
+    }
+
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+
+    public function trademarks()
+    {
+        return $this->hasMany(Trademark::class);
     }
 }

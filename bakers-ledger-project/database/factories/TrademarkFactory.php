@@ -17,6 +17,7 @@ class TrademarkFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => 1,
             'title' => ucfirst(fake()->unique()->words(2, true)),
             'company_id' => fake()->numberBetween(1, 2000),
             'grade_id' => fake()->numberBetween(1, 7),

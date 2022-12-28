@@ -9,7 +9,12 @@ class Grade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['user_id', 'title'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function trademarks()
     {

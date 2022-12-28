@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('trademarks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('title', 4095);
             $table->foreignId('company_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('grade_id')->constrained()->onDelete('cascade')->onUpdate('cascade');

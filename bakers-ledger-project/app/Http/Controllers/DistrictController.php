@@ -24,6 +24,8 @@ class DistrictController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', District::class);
+
         return view('entries.districts.create', [
             'settlements' => Settlement::all()
         ]);
@@ -31,7 +33,10 @@ class DistrictController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('operate', District::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'title' => 'required',
             'settlement_id' => 'required'
         ]);
@@ -43,6 +48,8 @@ class DistrictController extends Controller
 
     public function edit(District $district)
     {
+        $this->authorize('operate', District::class);
+
         return view('entries.districts.edit', [
             'district' => $district,
             'settlements' => Settlement::all()
@@ -51,6 +58,8 @@ class DistrictController extends Controller
 
     public function update(Request $request, District $district)
     {
+        $this->authorize('operate', District::class);
+
         $validated = $request->validate([
             'title' => 'required',
             'settlement_id' => 'required'
@@ -63,6 +72,8 @@ class DistrictController extends Controller
 
     public function destroy(District $district)
     {
+        $this->authorize('operate', District::class);
+
         $district->delete();
 
         return redirect('/districts')->with('message', 'Район успешно удалён');

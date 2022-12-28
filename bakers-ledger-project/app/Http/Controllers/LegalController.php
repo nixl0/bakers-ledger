@@ -23,12 +23,17 @@ class LegalController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Legal::class);
+
         return view('entries.legals.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Legal::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'title' => 'required'
         ]);
 
@@ -39,11 +44,15 @@ class LegalController extends Controller
 
     public function edit(Legal $legal)
     {
+        $this->authorize('operate', Legal::class);
+
         return view('entries.legals.edit', ['legal' => $legal]);
     }
 
     public function update(Request $request, Legal $legal)
     {
+        $this->authorize('operate', Legal::class);
+
         $validated = $request->validate([
             'title' => 'required'
         ]);
@@ -55,6 +64,8 @@ class LegalController extends Controller
 
     public function destroy(Legal $legal)
     {
+        $this->authorize('operate', Legal::class);
+
         $legal->delete();
 
         return redirect('/legals')->with('message', 'Тип собственности успешно удалён');

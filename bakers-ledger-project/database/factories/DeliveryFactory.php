@@ -17,6 +17,7 @@ class DeliveryFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => 1,
             'shop_id' => fake()->numberBetween(1, 5000),
             'trademark_id' => fake()->numberBetween(1, 6000),
             'price' => fake()->numberBetween(1, 30) * 10,

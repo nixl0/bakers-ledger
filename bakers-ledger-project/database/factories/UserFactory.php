@@ -17,8 +17,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $names = [fake('ru_RU')->lastName(), fake('ru_RU')->firstName(), fake('ru_RU')->firstName()];
-
         return [
             'name' => fake()->unique()->username(),
             'email' => fake()->unique()->safeEmail(),

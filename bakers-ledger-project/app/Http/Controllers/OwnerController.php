@@ -24,6 +24,8 @@ class OwnerController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Owner::class);
+
         return view('entries.owners.create', [
             'companies' => Company::all()
         ]);
@@ -31,7 +33,10 @@ class OwnerController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Owner::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'lastname' => 'required',
             'firstname' => 'required',
             'patronym' => 'required'
@@ -44,6 +49,8 @@ class OwnerController extends Controller
 
     public function edit(Owner $owner)
     {
+        $this->authorize('operate', Owner::class);
+
         return view('entries.owners.edit', [
             'owner' => $owner,
             'companies' => Company::all()
@@ -52,6 +59,8 @@ class OwnerController extends Controller
 
     public function update(Request $request, Owner $owner)
     {
+        $this->authorize('operate', Owner::class);
+
         $validated = $request->validate([
             'lastname' => 'required',
             'firstname' => 'required',
@@ -65,6 +74,8 @@ class OwnerController extends Controller
 
     public function destroy(Owner $owner)
     {
+        $this->authorize('operate', Owner::class);
+
         $owner->delete();
 
         return redirect('/owners')->with('message', 'Владелец успешно удалён');

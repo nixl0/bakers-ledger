@@ -23,12 +23,17 @@ class SettlementController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Settlement::class);
+
         return view('entries.settlements.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Settlement::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'title' => 'required'
         ]);
 
@@ -39,11 +44,15 @@ class SettlementController extends Controller
 
     public function edit(Settlement $settlement)
     {
+        $this->authorize('operate', Settlement::class);
+
         return view('entries.settlements.edit', ['settlement' => $settlement]);
     }
 
     public function update(Request $request, Settlement $settlement)
     {
+        $this->authorize('operate', Settlement::class);
+
         $validated = $request->validate([
             'title' => 'required'
         ]);
@@ -55,6 +64,8 @@ class SettlementController extends Controller
 
     public function destroy(Settlement $settlement)
     {
+        $this->authorize('operate', Settlement::class);
+
         $settlement->delete();
 
         return redirect('/settlements')->with('message', 'Город успешно удалён');

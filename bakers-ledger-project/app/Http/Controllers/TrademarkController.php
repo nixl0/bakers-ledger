@@ -25,6 +25,8 @@ class TrademarkController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Trademark::class);
+
         return view('entries.trademarks.create', [
             'companies' => Company::all(),
             'grades' => Grade::all()
@@ -33,7 +35,10 @@ class TrademarkController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Trademark::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'title' => 'required',
             'company_id' => 'required',
             'grade_id' => 'required',
@@ -48,6 +53,8 @@ class TrademarkController extends Controller
 
     public function edit(Trademark $trademark)
     {
+        $this->authorize('operate', Trademark::class);
+
         return view('entries.trademarks.edit', [
             'trademark' => $trademark,
             'companies' => Company::all(),
@@ -57,6 +64,8 @@ class TrademarkController extends Controller
 
     public function update(Request $request, Trademark $trademark)
     {
+        $this->authorize('operate', Trademark::class);
+
         $validated = $request->validate([
             'title' => 'required',
             'company_id' => 'required',
@@ -72,6 +81,8 @@ class TrademarkController extends Controller
 
     public function destroy(Trademark $trademark)
     {
+        $this->authorize('operate', Trademark::class);
+
         $trademark->delete();
 
         return redirect('/trademarks')->with('message', 'Торговая марка успешно удалена');

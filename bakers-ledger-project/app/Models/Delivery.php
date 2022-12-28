@@ -9,7 +9,12 @@ class Delivery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['shop_id', 'trademark_id', 'price', 'quantity', 'date'];
+    protected $fillable = ['user_id', 'shop_id', 'trademark_id', 'price', 'quantity', 'date'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function shop()
     {

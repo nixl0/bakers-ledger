@@ -25,6 +25,8 @@ class DeliveryController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Delivery::class);
+
         return view('entries.deliveries.create', [
             'shops' => Shop::all(),
             'trademarks' => Trademark::all()
@@ -33,7 +35,10 @@ class DeliveryController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', Delivery::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'shop_id' => 'required',
             'trademark_id' => 'required',
             'price' => 'required|numeric',
@@ -48,6 +53,8 @@ class DeliveryController extends Controller
 
     public function edit(Delivery $delivery)
     {
+        $this->authorize('update', $delivery);
+
         return view('entries.deliveries.edit', [
             'delivery' => $delivery,
             'shops' => Shop::all(),
@@ -57,6 +64,8 @@ class DeliveryController extends Controller
 
     public function update(Request $request, Delivery $delivery)
     {
+        $this->authorize('update', $delivery);
+
         $validated = $request->validate([
             'shop_id' => 'required',
             'trademark_id' => 'required',

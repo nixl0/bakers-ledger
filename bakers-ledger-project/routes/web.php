@@ -6,13 +6,11 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\OwnerController;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\UserController;
-use App\Models\Trademark;
 
 /*
 |--------------------------------------------------------------------------

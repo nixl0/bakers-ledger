@@ -9,7 +9,12 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number', 'title', 'district_id', 'address', 'phone'];
+    protected $fillable = ['user_id', 'number', 'title', 'district_id', 'address', 'phone'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function district()
     {

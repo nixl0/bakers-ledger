@@ -24,6 +24,8 @@ class ShopController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Shop::class);
+
         return view('entries.shops.create', [
             'districts' => District::all()
         ]);
@@ -31,7 +33,10 @@ class ShopController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Shop::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'number' => 'required',
             'title' => 'required',
             'district_id' => 'required',
@@ -46,6 +51,8 @@ class ShopController extends Controller
 
     public function edit(Shop $shop)
     {
+        $this->authorize('operate', Shop::class);
+
         return view('entries.shops.edit', [
             'shop' => $shop,
             'districts' => District::all()
@@ -54,6 +61,8 @@ class ShopController extends Controller
 
     public function update(Request $request, Shop $shop)
     {
+        $this->authorize('operate', Shop::class);
+
         $validated = $request->validate([
             'number' => 'required',
             'title' => 'required',
@@ -69,6 +78,8 @@ class ShopController extends Controller
 
     public function destroy(Shop $shop)
     {
+        $this->authorize('operate', Shop::class);
+
         $shop->delete();
 
         return redirect('/shops')->with('message', 'Магазин успешно удалён');

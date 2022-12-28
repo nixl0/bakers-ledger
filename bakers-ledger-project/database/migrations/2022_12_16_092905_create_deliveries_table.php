@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('shop_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('trademark_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('price');

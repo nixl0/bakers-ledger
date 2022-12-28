@@ -19,6 +19,7 @@ class ShopFactory extends Factory
         $randomSymbols = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Э', 'Ю', 'Я', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
         return [
+            'user_id' => 1,
             'number' => implode('', fake()->randomElements($randomSymbols, 16)),
             'title' => ucfirst(fake()->unique()->words(2, true)),
             'district_id' => fake()->numberBetween(1, 8000),

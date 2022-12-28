@@ -28,6 +28,8 @@ class CompanyController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Company::class);
+
         return view('entries.companies.create', [
             'districts' => District::all(),
             'legals' => Legal::all(),
@@ -37,7 +39,10 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Company::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'number' => 'required',
             'title' => 'required',
             'district_id' => 'required|numeric',
@@ -54,6 +59,8 @@ class CompanyController extends Controller
 
     public function edit(Company $company)
     {
+        $this->authorize('operate', Company::class);
+
         return view('entries.companies.edit', [
             'company' => $company,
             'districts' => District::all(),
@@ -64,6 +71,8 @@ class CompanyController extends Controller
 
     public function update(Request $request, Company $company)
     {
+        $this->authorize('operate', Company::class);
+
         $validated = $request->validate([
             'number' => 'required',
             'title' => 'required',
@@ -81,6 +90,8 @@ class CompanyController extends Controller
 
     public function destroy(Company $company)
     {
+        $this->authorize('operate', Company::class);
+
         $company->delete();
 
         return redirect('/companies')->with('message', 'Предприятие успешно удалено');

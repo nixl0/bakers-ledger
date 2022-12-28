@@ -13,6 +13,8 @@
         <form action="/districts" method="POST" class="w-2/3 flex flex-col space-y-6">
             @csrf
 
+            <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="invisible">
+
             <h1 class="text-2xl font-bold text-center">Добавить район</h1>
 
             {{-- title --}}

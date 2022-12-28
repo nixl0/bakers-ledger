@@ -23,12 +23,17 @@ class GradeController extends Controller
 
     public function create()
     {
+        $this->authorize('operate', Grade::class);
+
         return view('entries.grades.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('operate', Grade::class);
+
         $validated = $request->validate([
+            'user_id' => '',
             'title' => 'required'
         ]);
 
@@ -39,11 +44,15 @@ class GradeController extends Controller
 
     public function edit(Grade $grade)
     {
+        $this->authorize('operate', Grade::class);
+
         return view('entries.grades.edit', ['grade' => $grade]);
     }
 
     public function update(Request $request, Grade $grade)
     {
+        $this->authorize('operate', Grade::class);
+
         $validated = $request->validate([
             'title' => 'required'
         ]);
@@ -55,6 +64,8 @@ class GradeController extends Controller
 
     public function destroy(Grade $grade)
     {
+        $this->authorize('operate', Grade::class);
+
         $grade->delete();
 
         return redirect('/grades')->with('message', 'Сорт муки успешно удалён');
