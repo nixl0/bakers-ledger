@@ -33,16 +33,27 @@
 
                 {{-- legal --}}
                 <div class="flex items-center space-x-2">
-                    <label for="legal_id" class="">
+                    <label for="legal_id">
                         тип собственности
                     </label>
-                    <input list="legals" name="legal_id" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ old('legal_id') }}">
-                    <datalist id="legals">
+                    <div class="ledger-search-container w-full flex flex-col space-y-2">
+                        <input type="text" class="ledger-search-value-input w-full p-4 text-gray-900 border rounded-md" value="" placeholder="Нажмите, чтобы вывести список">
+                        <input type="text" name="legal_id" class="ledger-search-id-input hidden" value="{{ old('legal_id') }}">
+
+                        <div class="ledger-search-dropdown hidden w-full p-4 h-64 overflow-y-auto text-gray-900 border rounded-md">
+                            <ul class="ledger-search-ul">
+                                @foreach ($legals as $legal)
+                                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300" value="{{ $legal->id }}">{{ $legal->title }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        {{-- <select name="legal_id" id="legals" class="ledger-search-list w-full p-4 text-gray-900 border rounded-md">
                         @foreach ($legals as $legal)
-                            <option value="{{ $legal->id }}" label="{{ $legal->title }}" />
-                        @endforeach
-                    </datalist>
+                            <option value="{{ $legal->id }}">{{ $legal->title }}</option>
+                        @endforeach --}}
+                    </select>
+                    </div>
                 </div>
                 @error('legal_id')
                     <p class="text-red-500">
