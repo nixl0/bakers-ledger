@@ -10,7 +10,7 @@
     <div class="m-4 px-4">
 
         @can('operate', App\Models\Settlement::class)
-            @include('components.create-entry', ['href' => '/settlements/create'])
+            <x-create-entry href='/settlements/create' />
         @endcan
 
         <div class="py-4">
@@ -21,17 +21,12 @@
             @foreach ($settlements as $settlement)
                 <a href="/settlements/{{ $settlement->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
-                        @include('components.colout', [
-                            'entity' => $settlement,
-                            'colname' => 'название',
-                            'goal' => $settlement->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $settlement,
-                            'colname' => 'автор',
-                            'goal' => $settlement->user->name,
-                            'author' => true,
-                        ])
+
+                        {{-- title --}}
+                        <x-colout colname="название" :goal="$settlement->title" />
+
+                        {{-- author --}}
+                        <x-colout-author :entity="$settlement" />
                     </div>
                 </a>
             @endforeach

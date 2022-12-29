@@ -9,7 +9,7 @@
 @section('content')
     <div class="m-4 px-4">
         @can('create', App\Models\Delivery::class)
-            @include('components.create-entry', ['href' => '/deliveries/create'])
+            <x-create-entry href='/deliveries/create' />
         @endcan
 
         <div class="py-4">
@@ -21,52 +21,32 @@
                 <a href="/deliveries/{{ $delivery->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
 
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'номер магазина',
-                            'goal' => $delivery->shop->number,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'название магазина',
-                            'goal' => $delivery->shop->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'торговая марка',
-                            'goal' => $delivery->trademark->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'тип собственности',
-                            'goal' => $delivery->trademark->company->legal->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'предприятие',
-                            'goal' => $delivery->trademark->company->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'цена',
-                            'goal' => $delivery->price,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'количество',
-                            'goal' => $delivery->quantity,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'дата',
-                            'goal' => $delivery->date,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $delivery,
-                            'colname' => 'автор',
-                            'goal' => $delivery->user->name,
-                            'author' => true,
-                        ])
+                        {{-- shop number --}}
+                        <x-colout colname="номер магазина" :goal="$delivery->shop->number" />
+
+                        {{-- shop title --}}
+                        <x-colout colname="название магазина" :goal="$delivery->shop->title" />
+
+                        {{-- trademark title --}}
+                        <x-colout colname="торговая марка" :goal="$delivery->trademark->title" />
+
+                        {{-- trademark company legal title --}}
+                        <x-colout colname="тип собственности" :goal="$delivery->trademark->company->legal->title" />
+
+                        {{-- trademark company title --}}
+                        <x-colout colname="предприятие" :goal="$delivery->trademark->company->title" />
+
+                        {{-- price --}}
+                        <x-colout colname="цена" :goal="$delivery->price" />
+
+                        {{-- quantity --}}
+                        <x-colout colname="количество" :goal="$delivery->quantity" />
+
+                        {{-- date --}}
+                        <x-colout colname="дата" :goal="$delivery->date" />
+
+                        {{-- author --}}
+                        <x-colout-author :entity="$delivery" />
 
                     </div>
                 </a>

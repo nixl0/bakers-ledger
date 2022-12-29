@@ -9,7 +9,7 @@
 @section('content')
     <div class="m-4 px-4">
         @can('operate', App\Models\Shop::class)
-            @include('components.create-entry', ['href' => '/shops/create'])
+            <x-create-entry href='/shops/create' />
         @endcan
 
         <div class="py-4">
@@ -21,42 +21,26 @@
                 <a href="/shops/{{ $shop->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
 
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'номер',
-                            'goal' => $shop->number,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'название',
-                            'goal' => $shop->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'район',
-                            'goal' => $shop->district->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'город',
-                            'goal' => $shop->district->settlement->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'адрес',
-                            'goal' => $shop->address,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'телефон',
-                            'goal' => $shop->phone,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $shop,
-                            'colname' => 'автор',
-                            'goal' => $shop->user->name,
-                            'author' => true,
-                        ])
+                        {{-- number --}}
+                        <x-colout colname="номер" :goal="$shop->number" />
+
+                        {{-- title --}}
+                        <x-colout colname="название" :goal="$shop->title" />
+
+                        {{-- district title --}}
+                        <x-colout colname="район" :goal="$shop->district->title" />
+
+                        {{-- district settlement title --}}
+                        <x-colout colname="город" :goal="$shop->district->settlement->title" />
+
+                        {{-- address --}}
+                        <x-colout colname="адрес" :goal="$shop->address" />
+
+                        {{-- phone --}}
+                        <x-colout colname="телефон" :goal="$shop->phone" />
+
+                        {{-- author --}}
+                        <x-colout-author :entity="$shop" />
 
                     </div>
                 </a>

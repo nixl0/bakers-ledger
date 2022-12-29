@@ -11,9 +11,9 @@
 </head>
 <body>
 
-    @include('components.flash-message')
+    <x-flash-message />
 
-    @include('components.header')
+    @include('header')
 
     @yield('content')
 

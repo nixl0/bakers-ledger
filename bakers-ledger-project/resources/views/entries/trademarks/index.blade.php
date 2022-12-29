@@ -9,7 +9,7 @@
 @section('content')
     <div class="m-4 px-4">
         @can('operate', App\Models\Trademark::class)
-            @include('components.create-entry', ['href' => '/trademarks/create'])
+            <x-create-entry href='/trademarks/create' />
         @endcan
 
         <div class="py-4">
@@ -21,37 +21,23 @@
                 <a href="/trademarks/{{ $trademark->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
 
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'название',
-                            'goal' => $trademark->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'тип собственности',
-                            'goal' => $trademark->company->legal->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'предприятие',
-                            'goal' => $trademark->company->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'сорт муки',
-                            'goal' => $trademark->grade->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'ингредиенты',
-                            'goal' => $trademark->ingredients,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $trademark,
-                            'colname' => 'автор',
-                            'goal' => $trademark->user->name,
-                            'author' => true,
-                        ])
+                        {{-- title --}}
+                        <x-colout colname="название" :goal="$trademark->title" />
+
+                        {{-- company legal title --}}
+                        <x-colout colname="тип собственности" :goal="$trademark->company->legal->title" />
+
+                        {{-- company title --}}
+                        <x-colout colname="предприятие" :goal="$trademark->company->title" />
+
+                        {{-- grade title --}}
+                        <x-colout colname="сорт муки" :goal="$trademark->grade->title" />
+
+                        {{-- ingredients --}}
+                        <x-colout colname="ингредиенты" :goal="$trademark->ingredients" />
+
+                        {{-- author --}}
+                        <x-colout-author :entity="$trademark" />
 
                     </div>
                 </a>

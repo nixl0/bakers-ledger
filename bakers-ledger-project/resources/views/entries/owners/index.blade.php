@@ -9,7 +9,7 @@
 @section('content')
     <div class="m-4 px-4">
         @can('operate', App\Models\Company::class)
-            @include('components.create-entry', ['href' => '/owners/create'])
+            <x-create-entry href='/owners/create' />
         @endcan
 
 
@@ -22,21 +22,14 @@
                 <a href="/owners/{{ $owner->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
 
-                        @include('components.colout', [
-                            'entity' => $owner,
-                            'colname' => 'фамилия',
-                            'goal' => $owner->lastname,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $owner,
-                            'colname' => 'имя',
-                            'goal' => $owner->firstname,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $owner,
-                            'colname' => 'отчество',
-                            'goal' => $owner->patronym,
-                        ])
+                        {{-- lastname --}}
+                        <x-colout colname="фамилия" :goal="$owner->lastname" />
+
+                        {{-- firstname --}}
+                        <x-colout colname="имя" :goal="$owner->firstname" />
+
+                        {{-- patronym --}}
+                        <x-colout colname="отчество" :goal="$owner->patronym" />
 
                         {{-- companies --}}
                         <div class="flex">
@@ -44,21 +37,25 @@
                                 предприятия:
                             </span>
                             <span class="font-semibold truncate">
-                                @foreach ($owner->companies as $company)
+                                @if (count($owner->companies))
                                     <p>
-                                        <span>{{ $company->legal->title }}</span>
-                                        <span>{{ $company->title }}</span>
+                                        @foreach ($owner->companies as $company)
+                                            <p>
+                                                <span>{{ $company->legal->title }}</span>
+                                                <span>{{ $company->title }}</span>
+                                            </p>
+                                        @endforeach
                                     </p>
-                                @endforeach
+                                @else
+                                    <p class="text-red-500">
+                                        * компании не указаны *
+                                    </p>
+                                @endif
                             </span>
                         </div>
 
-                        @include('components.colout', [
-                            'entity' => $owner,
-                            'colname' => 'автор',
-                            'goal' => $owner->user->name,
-                            'author' => true,
-                        ])
+                        {{-- author --}}
+                        <x-colout-author :entity="$owner" />
                     </div>
                 </a>
             @endforeach

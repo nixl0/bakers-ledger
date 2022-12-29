@@ -10,7 +10,7 @@
     <div class="m-4 px-4">
 
         @can('operate', App\Models\Company::class)
-            @include('components.create-entry', ['href' => '/companies/create'])
+            <x-create-entry href='/companies/create' />
         @endcan
 
         <div class="py-4">
@@ -21,41 +21,26 @@
             @foreach ($companies as $company)
                 <a href="/companies/{{ $company->id }}">
                     <div class="p-4 m-2 rounded-md hover:bg-slate-100 transition duration-200 hover:drop-shadow-md">
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'номер',
-                            'goal' => $company->number,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'тип собственности',
-                            'goal' => $company->legal->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'название',
-                            'goal' => $company->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'район',
-                            'goal' => $company->district->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'город',
-                            'goal' => $company->district->settlement->title,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'год основания',
-                            'goal' => $company->since,
-                        ])
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'email',
-                            'goal' => $company->email,
-                        ])
+                        {{-- number --}}
+                        <x-colout colname="номер" :goal="$company->number" />
+
+                        {{-- legal title --}}
+                        <x-colout colname="тип собственности" :goal="$company->legal->title" />
+
+                        {{-- title --}}
+                        <x-colout colname="название" :goal="$company->title" />
+
+                        {{-- district title --}}
+                        <x-colout colname="район" :goal="$company->district->title" />
+
+                        {{-- district settlement title --}}
+                        <x-colout colname="город" :goal="$company->district->settlement->title" />
+
+                        {{-- since --}}
+                        <x-colout colname="год основания" :goal="$company->since" />
+
+                        {{-- legal title --}}
+                        <x-colout colname="тип собственности" :goal="$company->legal->title" />
 
                         {{-- owners --}}
                         <div class="flex">
@@ -63,18 +48,22 @@
                                 владельцы:
                             </span>
                             <span class="font-semibold truncate">
-                                @foreach ($company->owners as $owner)
-                                    <p>{{ $owner->lastname }} {{ $owner->firstname }}</p>
-                                @endforeach
+                                @if (count($company->owners))
+                                    <p>
+                                        @foreach ($company->owners as $owner)
+                                            {{ $owner->lastname }} {{ $owner->firstname }},
+                                        @endforeach
+                                    </p>
+                                @else
+                                    <p class="text-red-500">
+                                        * владельцы не указаны *
+                                    </p>
+                                @endif
                             </span>
                         </div>
 
-                        @include('components.colout', [
-                            'entity' => $company,
-                            'colname' => 'автор',
-                            'goal' => $company->user->name,
-                            'author' => true,
-                        ])
+                        {{-- author --}}
+                        <x-colout-author :entity="$company" />
                     </div>
                 </a>
             @endforeach

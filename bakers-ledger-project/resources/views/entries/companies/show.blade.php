@@ -9,7 +9,7 @@
 @section('content')
     <div class="mx-4 px-4">
 
-        @include('components.back-button')
+        <x-back-button />
 
         <div class="border shadow-xl rounded-md p-8 flex flex-row justify-center">
             <div class="flex flex-col justify-between space-y-4 pr-4 text-right">
@@ -51,7 +51,7 @@
         </div>
 
         @can('operate', App\Models\Company::class)
-            @include('components.edit-delete-buttons', ['href' => '/companies/' . $company->id])
+            <x-edit-delete-entry href="/companies/{{$company->id}}" />
         @endcan
     </div>
 @endsection
