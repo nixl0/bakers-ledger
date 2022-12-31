@@ -17,12 +17,7 @@
             <h1 class="text-2xl font-bold text-center">Редактировать сорт муки</h1>
 
             {{-- title --}}
-            <div class="flex items-center space-x-2">
-                <label for="title" class="">
-                    название
-                </label>
-                <input type="text" name="title" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $grade->title }}">
-            </div>
+            <x-input-box colname="название" colname_form="title" input_value="{{ $grade->title }}" />
             @error('title')
                 <p class="text-red-500">
                     {{ $message }}

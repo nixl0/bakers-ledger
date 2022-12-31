@@ -13,18 +13,12 @@
             <form action="/owners" method="POST" class="w-2/3 flex flex-col space-y-6">
                 @csrf
 
-                <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="invisible">
+                <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="hidden">
 
                 <h1 class="text-2xl font-bold text-center">Добавить владельца</h1>
 
                 {{-- lastname --}}
-                <div class="flex items-center space-x-2">
-                    <label for="lastname" class="">
-                        фамилия
-                    </label>
-                    <input type="text" name="lastname" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ old('lastname') }}">
-                </div>
+                <x-input-box colname="фамилия" colname_form="lastname" input_value="{{ old('lastname') }}" />
                 @error('lastname')
                     <p class="text-red-500">
                         {{ $message }}
@@ -32,13 +26,7 @@
                 @enderror
 
                 {{-- firstname --}}
-                <div class="flex items-center space-x-2">
-                    <label for="firstname" class="">
-                        имя
-                    </label>
-                    <input type="text" name="firstname" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ old('firstname') }}">
-                </div>
+                <x-input-box colname="имя" colname_form="firstname" input_value="{{ old('firstname') }}" />
                 @error('firstname')
                     <p class="text-red-500">
                         {{ $message }}
@@ -46,13 +34,7 @@
                 @enderror
 
                 {{-- patronym --}}
-                <div class="flex items-center space-x-2">
-                    <label for="patronym" class="">
-                        отчество
-                    </label>
-                    <input type="text" name="patronym" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ old('patronym') }}">
-                </div>
+                <x-input-box colname="отчество" colname_form="patronym" input_value="{{ old('patronym') }}" />
                 @error('patronym')
                     <p class="text-red-500">
                         {{ $message }}

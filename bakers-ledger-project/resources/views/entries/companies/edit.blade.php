@@ -17,32 +17,20 @@
                 <h1 class="text-2xl font-bold text-center">Редактировать предприятие</h1>
 
                 {{-- number --}}
-                <div class="flex items-center space-x-2">
-                    <label for="number" class="">
-                        номер
-                    </label>
-                    <input type="text" name="number" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->number }}">
-                </div>
+                <x-input-box colname="номер" colname_form="number" input_value="{{ $company->number }}" />
                 @error('number')
                     <p class="text-red-500">
                         {{ $message }}
                     </p>
                 @enderror
 
-                {{-- legal --}}
-                <div class="flex items-center space-x-2">
-                    <label for="legal_id" class="">
-                        тип собственности
-                    </label>
-                    <input list="legals" name="legal_id" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->legal_id }}">
-                    <datalist id="legals">
-                        @foreach ($legals as $legal)
-                            <option value="{{ $legal->id }}" label="{{ $legal->title }}" />
-                        @endforeach
-                    </datalist>
-                </div>
+                {{-- legal_id --}}
+                <x-input-box-search colname="тип собственности" colname_form="legal_id" input_value="{{ $company->legal_id }}">
+                    @foreach ($legals as $legal)
+                        <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                            value="{{ $legal->id }}">{{ $legal->title }}</li>
+                    @endforeach
+                </x-input-box-search>
                 @error('legal_id')
                     <p class="text-red-500">
                         {{ $message }}
@@ -50,33 +38,20 @@
                 @enderror
 
                 {{-- title --}}
-                <div class="flex items-center space-x-2">
-                    <label for="title" class="">
-                        название
-                    </label>
-                    <input type="text" name="title" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->title }}">
-                </div>
+                <x-input-box colname="название" colname_form="title" input_value="{{ $company->title }}" />
                 @error('title')
                     <p class="text-red-500">
                         {{ $message }}
                     </p>
                 @enderror
 
-                {{-- district --}}
-                <div class="flex items-center space-x-2">
-                    <label for="district_id" class="">
-                        район
-                    </label>
-                    <input list="districts" name="district_id" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->district_id }}">
-                    <datalist id="districts">
-                        @foreach ($districts as $district)
-                            <option value="{{ $district->id }}"
-                                label="{{ $district->title }}, {{ $district->settlement->title }}" />
-                        @endforeach
-                    </datalist>
-                </div>
+                {{-- district_id --}}
+                <x-input-box-search colname="район" colname_form="district_id" input_value="{{ $company->district_id }}">
+                    @foreach ($districts as $district)
+                        <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                            value="{{ $district->id }}">{{ $district->title }}, {{ $district->settlement->title }}</li>
+                    @endforeach
+                </x-input-box-search>
                 @error('district_id')
                     <p class="text-red-500">
                         {{ $message }}
@@ -84,13 +59,7 @@
                 @enderror
 
                 {{-- since --}}
-                <div class="flex items-center space-x-2">
-                    <label for="since" class="">
-                        год основания
-                    </label>
-                    <input type="number" name="since" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->since }}">
-                </div>
+                <x-input-box colname="год основания" colname_form="since" input_value="{{ $company->since }}" />
                 @error('since')
                     <p class="text-red-500">
                         {{ $message }}
@@ -98,13 +67,7 @@
                 @enderror
 
                 {{-- phone --}}
-                <div class="flex items-center space-x-2">
-                    <label for="phone" class="">
-                        телефон
-                    </label>
-                    <input type="text" name="phone" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->phone }}">
-                </div>
+                <x-input-box colname="телефон" colname_form="phone" input_value="{{ $company->phone }}" />
                 @error('phone')
                     <p class="text-red-500">
                         {{ $message }}
@@ -112,13 +75,7 @@
                 @enderror
 
                 {{-- email --}}
-                <div class="flex items-center space-x-2">
-                    <label for="email" class="">
-                        email
-                    </label>
-                    <input type="email" name="email" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $company->email }}">
-                </div>
+                <x-input-box colname="email" colname_form="email" input_value="{{ $company->email }}" />
                 @error('email')
                     <p class="text-red-500">
                         {{ $message }}

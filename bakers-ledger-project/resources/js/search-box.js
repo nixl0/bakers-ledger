@@ -1,48 +1,56 @@
-const ledgerSearchValueInput = document.querySelector('.ledger-search-value-input')
-const ledgerSearchIdInput = document.querySelector('.ledger-search-id-input')
-const ledgerSearchDropdown = document.querySelector('.ledger-search-dropdown')
-const ledgerSearchLi = document.querySelectorAll('.ledger-search-li')
+const ledgerSearchContainerS = document.querySelectorAll('.ledger-search-container')
 
-// on input click toggle dropdown
-ledgerSearchValueInput.addEventListener('click', () => {
-    ledgerSearchDropdown.classList.toggle('hidden')
-})
+ledgerSearchContainerS.forEach(ledgerSearchContainer => {
+    const ledgerSearchValueInput = ledgerSearchContainer.querySelector('.ledger-search-value-input')
+    const ledgerSearchIdInput = ledgerSearchContainer.querySelector('.ledger-search-id-input')
+    const ledgerSearchDropdown = ledgerSearchContainer.querySelector('.ledger-search-dropdown')
+    const ledgerSearchLiS = ledgerSearchContainer.querySelectorAll('.ledger-search-li')
 
-// on li click toggle selection
-ledgerSearchLi.forEach((li) => {
-    li.addEventListener('click', (e) => {
-        const liValue = e.target.value
+    // on window load, select textcontent of li by the given id in ledgerSearchIdInput
+    window.addEventListener('load', () => {
+        const savedId = ledgerSearchIdInput.value
 
-        ledgerSearchIdInput.value = liValue
+        ledgerSearchLiS.forEach(li => {
+            if (li.value == savedId) {
+                ledgerSearchValueInput.value = li.textContent
+            }
+        });
+    })
 
-        ledgerSearchValueInput.value = li.textContent
+    // on input click toggle dropdown
+    ledgerSearchValueInput.addEventListener('click', () => {
+        ledgerSearchDropdown.classList.toggle('hidden')
+    })
+
+    // on li click toggle selection
+    ledgerSearchLiS.forEach((li) => {
+        li.addEventListener('click', (e) => {
+            const liValue = e.target.value
+
+            if (liValue != null) {
+                ledgerSearchIdInput.value = liValue
+
+                ledgerSearchValueInput.value = li.textContent
+            }
+            else {
+                ledgerSearchValueInput.value = 'ошибка. попробуйте ещё раз'
+            }
+        })
+    })
+
+    // on ledgerSearchValueInput input toggle list values
+    ledgerSearchValueInput.addEventListener('input', (e) => {
+        const userValue = e.target.value
+
+        ledgerSearchLiS.forEach((li) => {
+            const liValue = li.textContent.toLowerCase()
+
+            if (!liValue.includes(userValue)) {
+                li.classList.add('hidden')
+            }
+            else {
+                li.classList.remove('hidden')
+            }
+        })
     })
 })
-
-// on ledgerSearchValueInput input toggle list values
-ledgerSearchValueInput.addEventListener('input', (e) => {
-    const userValue = e.target.value
-
-    ledgerSearchLi.forEach((li) => {
-        const liValue = li.textContent.toLowerCase()
-
-        if (!liValue.includes(userValue)) {
-            li.classList.add('hidden')
-        }
-        else {
-            li.classList.remove('hidden')
-        }
-    })
-})
-
-// ledgerSearchIdInput.addEventListener('input', (e) => {
-//     const givenId = e.target.value
-
-//     ledgerSearchLi.forEach((li) => {
-//         const matchingId = li.getAttribute('value')
-
-//         if (givenId === matchingId) {
-//             ledgerSearchValueInput.value = li.textContent
-//         }
-//     })
-// })

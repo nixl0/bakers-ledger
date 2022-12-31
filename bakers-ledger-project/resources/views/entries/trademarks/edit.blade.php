@@ -17,48 +17,33 @@
             <h1 class="text-2xl font-bold text-center">Изменить торговую марку</h1>
 
             {{-- title --}}
-            <div class="flex items-center space-x-2">
-                <label for="title" class="">
-                    название
-                </label>
-                <input type="text" name="title" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $trademark->title }}">
-            </div>
+            <x-input-box colname="название" colname_form="title" input_value="{{ $trademark->title }}" />
             @error('title')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             @enderror
 
-            {{-- company --}}
-            <div class="flex items-center space-x-2">
-                <label for="company_id" class="">
-                    предприятие
-                </label>
-                <input list="companies" name="company_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $trademark->company->id }}">
-                <datalist id="companies">
-                    @foreach ($companies as $company)
-                        <option value="{{ $company->id }}" label="{{ $company->legal->title }} {{ $company->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- company_id --}}
+            <x-input-box-search colname="предприятия" colname_form="company_id" input_value="{{ $trademark->company->id }}">
+                @foreach ($companies as $company)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $company->id }}">{{ $company->title }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('company_id')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             @enderror
 
-            {{-- grade --}}
-            <div class="flex items-center space-x-2">
-                <label for="grade_id" class="">
-                    сорт муки
-                </label>
-                <input list="grades" name="grade_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $trademark->grade->id }}">
-                <datalist id="grades">
-                    @foreach ($grades as $grade)
-                        <option value="{{ $grade->id }}" label="{{ $grade->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- grade_id --}}
+            <x-input-box-search colname="район" colname_form="grade_id" input_value="{{ $trademark->grade->id }}">
+                @foreach ($grades as $grade)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $grade->id }}">{{ $grade->title }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('grade_id')
                 <p class="text-red-500">
                     {{ $message }}
@@ -66,12 +51,7 @@
             @enderror
 
             {{-- ingredients --}}
-            <div class="flex items-center space-x-2">
-                <label for="ingredients" class="">
-                    ингредиенты
-                </label>
-                <input type="text" multiline name="ingredients" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $trademark->ingredients }}">
-            </div>
+            <x-input-box colname="ингредиенты" colname_form="ingredients" input_value="{{ $trademark->ingredients }}" />
             @error('ingredients')
                 <p class="text-red-500">
                     {{ $message }}
@@ -79,12 +59,7 @@
             @enderror
 
             {{-- weight --}}
-            <div class="flex items-center space-x-2">
-                <label for="weight" class="">
-                    вес
-                </label>
-                <input type="number" name="weight" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $trademark->weight }}">
-            </div>
+            <x-input-box colname="вес" colname_form="weight" input_value="{{ $trademark->weight }}" />
             @error('weight')
                 <p class="text-red-500">
                     {{ $message }}

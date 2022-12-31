@@ -17,13 +17,7 @@
                 <h1 class="text-2xl font-bold text-center">Изменить владельца</h1>
 
                 {{-- lastname --}}
-                <div class="flex items-center space-x-2">
-                    <label for="lastname" class="">
-                        фамилия
-                    </label>
-                    <input type="text" name="lastname" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $owner->lastname }}">
-                </div>
+                <x-input-box colname="фамилия" colname_form="lastname" input_value="{{ $owner->lastname }}" />
                 @error('lastname')
                     <p class="text-red-500">
                         {{ $message }}
@@ -31,13 +25,7 @@
                 @enderror
 
                 {{-- firstname --}}
-                <div class="flex items-center space-x-2">
-                    <label for="firstname" class="">
-                        имя
-                    </label>
-                    <input type="text" name="firstname" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $owner->firstname }}">
-                </div>
+                <x-input-box colname="имя" colname_form="firstname" input_value="{{ $owner->firstname }}" />
                 @error('firstname')
                     <p class="text-red-500">
                         {{ $message }}
@@ -45,13 +33,7 @@
                 @enderror
 
                 {{-- patronym --}}
-                <div class="flex items-center space-x-2">
-                    <label for="patronym" class="">
-                        отчество
-                    </label>
-                    <input type="text" name="patronym" class="w-full p-4 text-gray-900 border rounded-md"
-                        value="{{ $owner->patronym }}">
-                </div>
+                <x-input-box colname="отчество" colname_form="patronym" input_value="{{ $owner->patronym }}" />
                 @error('patronym')
                     <p class="text-red-500">
                         {{ $message }}

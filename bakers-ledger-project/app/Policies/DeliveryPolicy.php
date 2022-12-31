@@ -26,7 +26,10 @@ class DeliveryPolicy
 
     public function update(User $user, Delivery $delivery)
     {
-        if ($user->role == User::IS_DELIVERER  && (auth()->check() && $delivery->user_id === $user->id)) {
+        if (
+            $user->role == User::IS_ADMIN ||
+            $user->role == User::IS_MANAGER ||
+            $user->role == User::IS_DELIVERER  && (auth()->check() && $delivery->user_id === $user->id)) {
             return Response::allow();
         }
 

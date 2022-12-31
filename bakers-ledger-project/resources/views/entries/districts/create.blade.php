@@ -13,35 +13,25 @@
         <form action="/districts" method="POST" class="w-2/3 flex flex-col space-y-6">
             @csrf
 
-            <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="invisible">
+            <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="hidden">
 
             <h1 class="text-2xl font-bold text-center">Добавить район</h1>
 
             {{-- title --}}
-            <div class="flex items-center space-x-2">
-                <label for="title" class="">
-                    название
-                </label>
-                <input type="text" name="title" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('title') }}">
-            </div>
+            <x-input-box colname="название" colname_form="title" input_value="{{ old('title') }}" />
             @error('title')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             @enderror
 
-            {{-- settlement --}}
-            <div class="flex items-center space-x-2">
-                <label for="settlement_id" class="">
-                    город
-                </label>
-                <input list="settlements" name="settlement_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('settlement_id') }}">
-                <datalist id="settlements">
-                    @foreach ($settlements as $settlement)
-                        <option value="{{ $settlement->id }}" label="{{ $settlement->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- settlement_id --}}
+            <x-input-box-search colname="город" colname_form="settlement_id" input_value="{{ old('settlement_id') }}">
+                @foreach ($settlements as $settlement)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $settlement->id }}">{{ $settlement->title }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('settlement_id')
                 <p class="text-red-500">
                     {{ $message }}

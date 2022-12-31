@@ -13,40 +13,30 @@
         <form action="/deliveries" method="POST" class="w-2/3 flex flex-col space-y-6">
             @csrf
 
-            <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="invisible">
+            <input type="text" name="user_id" value="{{ auth()->user()->id }}" class="hidden">
 
             <h1 class="text-2xl font-bold text-center">Добавить поставку</h1>
 
-            {{-- shop --}}
-            <div class="flex items-center space-x-2">
-                <label for="shop_id" class="">
-                    магазин
-                </label>
-                <input list="shops" name="shop_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('shop_id') }}">
-                <datalist id="shops">
-                    @foreach ($shops as $shop)
-                        <option value="{{ $shop->id }}" label="{{ $shop->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- shop_id --}}
+            <x-input-box-search colname="магазин" colname_form="shop_id" input_value="{{ old('shop_id') }}">
+                @foreach ($shops as $shop)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $shop->id }}">{{ $shop->title }}, {{ $shop->number }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('shop_id')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             @enderror
 
-            {{-- trademark --}}
-            <div class="flex items-center space-x-2">
-                <label for="trademark_id" class="">
-                    торговая марка
-                </label>
-                <input list="trademarks" name="trademark_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('trademark_id') }}">
-                <datalist id="trademarks">
-                    @foreach ($trademarks as $trademark)
-                        <option value="{{ $trademark->id }}" label="{{ $trademark->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- trademark_id --}}
+            <x-input-box-search colname="торговая марка" colname_form="trademark_id" input_value="{{ old('trademark_id') }}">
+                @foreach ($trademarks as $trademark)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $trademark->id }}">{{ $trademark->title }}, {{ $trademark->company->title }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('trademark_id')
                 <p class="text-red-500">
                     {{ $message }}
@@ -54,12 +44,7 @@
             @enderror
 
             {{-- price --}}
-            <div class="flex items-center space-x-2">
-                <label for="price" class="">
-                    цена
-                </label>
-                <input type="text" name="price" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('price') }}">
-            </div>
+            <x-input-box colname="цена" colname_form="price" input_value="{{ old('price') }}" />
             @error('price')
                 <p class="text-red-500">
                     {{ $message }}
@@ -67,12 +52,7 @@
             @enderror
 
             {{-- quantity --}}
-            <div class="flex items-center space-x-2">
-                <label for="quantity" class="">
-                    количество
-                </label>
-                <input type="text" name="quantity" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('quantity') }}">
-            </div>
+            <x-input-box colname="количество" colname_form="quantity" input_value="{{ old('quantity') }}" />
             @error('quantity')
                 <p class="text-red-500">
                     {{ $message }}
@@ -80,12 +60,7 @@
             @enderror
 
             {{-- date --}}
-            <div class="flex items-center space-x-2">
-                <label for="date" class="">
-                    дата
-                </label>
-                <input type="date" name="date" class="w-full p-4 text-gray-900 border rounded-md" value="{{ old('date') }}">
-            </div>
+            <x-input-box colname="дата" colname_form="date" input_value="{{ old('date') }}" />
             @error('date')
                 <p class="text-red-500">
                     {{ $message }}

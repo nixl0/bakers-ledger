@@ -17,12 +17,7 @@
             <h1 class="text-2xl font-bold text-center">Изменить магазин</h1>
 
             {{-- number --}}
-            <div class="flex items-center space-x-2">
-                <label for="number" class="">
-                    номер
-                </label>
-                <input type="text" name="number" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $shop->number }}">
-            </div>
+            <x-input-box colname="номер" colname_form="number" input_value="{{ $shop->number }}" />
             @error('number')
                 <p class="text-red-500">
                     {{ $message }}
@@ -30,30 +25,20 @@
             @enderror
 
             {{-- title --}}
-            <div class="flex items-center space-x-2">
-                <label for="title" class="">
-                    название
-                </label>
-                <input type="text" name="title" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $shop->title }}">
-            </div>
+            <x-input-box colname="название" colname_form="title" input_value="{{ $shop->title }}" />
             @error('title')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             @enderror
 
-            {{-- district --}}
-            <div class="flex items-center space-x-2">
-                <label for="district_id" class="">
-                    район
-                </label>
-                <input list="districts" name="district_id" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $shop->district->id }}">
-                <datalist id="districts">
-                    @foreach ($districts as $district)
-                        <option value="{{ $district->id }}" label="{{ $district->title }}, {{ $district->settlement->title }}" />
-                    @endforeach
-                </datalist>
-            </div>
+            {{-- district_id --}}
+            <x-input-box-search colname="район" colname_form="district_id" input_value="{{ $shop->district->id }}">
+                @foreach ($districts as $district)
+                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                        value="{{ $district->id }}">{{ $district->title }}, {{ $district->settlement->title }}</li>
+                @endforeach
+            </x-input-box-search>
             @error('district_id')
                 <p class="text-red-500">
                     {{ $message }}
@@ -61,12 +46,7 @@
             @enderror
 
             {{-- address --}}
-            <div class="flex items-center space-x-2">
-                <label for="address" class="">
-                    адрес
-                </label>
-                <input type="text" name="address" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $shop->address }}">
-            </div>
+            <x-input-box colname="адрес" colname_form="address" input_value="{{ $shop->address }}" />
             @error('address')
                 <p class="text-red-500">
                     {{ $message }}
@@ -74,12 +54,7 @@
             @enderror
 
             {{-- phone --}}
-            <div class="flex items-center space-x-2">
-                <label for="phone" class="">
-                    телефон
-                </label>
-                <input type="text" name="phone" class="w-full p-4 text-gray-900 border rounded-md" value="{{ $shop->phone }}">
-            </div>
+            <x-input-box colname="телефон" colname_form="phone" input_value="{{ $shop->phone }}" />
             @error('phone')
                 <p class="text-red-500">
                     {{ $message }}

@@ -39,8 +39,11 @@
                         {{-- since --}}
                         <x-colout colname="год основания" :goal="$company->since" />
 
-                        {{-- legal title --}}
-                        <x-colout colname="тип собственности" :goal="$company->legal->title" />
+                        {{-- phone --}}
+                        <x-colout colname="телефон" :goal="$company->phone" />
+
+                        {{-- email --}}
+                        <x-colout colname="email" :goal="$company->email" />
 
                         {{-- owners --}}
                         <div class="flex">
