@@ -49,8 +49,11 @@ class CompanyController extends Controller
             'legal_id' => 'required|numeric',
             'since' => 'required|numeric',
             'phone' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'owner_id' => ''
         ]);
+
+        $validated['owner_id'] = explode(',', $validated['owner_id']);
 
         Company::create($validated);
 

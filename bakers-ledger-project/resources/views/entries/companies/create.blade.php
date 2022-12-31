@@ -83,7 +83,18 @@
                     </p>
                 @enderror
 
-                {{-- TODO owners multiselect --}}
+                {{-- owners multiselect --}}
+                <x-input-box-multiple colname="владельцы" colname_form="owner_id" input_value="{{ old('owner_id') }}">
+                    @foreach ($owners as $owner)
+                        <li class="ledger-multiple-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                            value="{{ $owner->id }}">{{ $owner->lastname }} {{ $owner->firstname }} {{ $owner->patronym }}</li>
+                    @endforeach
+                </x-input-box-multiple>
+                @error('owner_id')
+                    <p class="text-red-500">
+                        {{ $message }}
+                    </p>
+                @enderror
 
                 <button type="submit"
                     class="px-6 py-4 my-2 w-fit self-center rounded-md flex space-x-2 transition duration-200 bg-slate-100 hover:drop-shadow-md">
