@@ -42,7 +42,10 @@ class OwnerController extends Controller
             'patronym' => 'required'
         ]);
 
-        Owner::create($validated);
+        $owner = Owner::create($validated);
+
+        $companies = explode(',', $request['company_id']);
+        $owner->companies()->attach($companies);
 
         return redirect('/owners')->with('message', 'Владелец успешно добавлен');
     }

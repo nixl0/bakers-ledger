@@ -41,7 +41,19 @@
                     </p>
                 @enderror
 
-                {{-- TODO companies multiselect --}}
+                {{-- companies multiselect --}}
+                <x-input-box-multiple colname="предприятия" colname_form="company_id" input_value="{{ old('company_id') }}">
+                    @foreach ($companies as $company)
+                        <li class="ledger-multiple-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
+                            value="{{ $company->id }}" title="{{ $company->legal->title }}, {{ $company->title }}">
+                            {{ $company->legal->title }}, {{ $company->title }}</li>
+                    @endforeach
+                </x-input-box-multiple>
+                @error('company_id')
+                    <p class="text-red-500">
+                        {{ $message }}
+                    </p>
+                @enderror
 
                 <button type="submit"
                     class="px-6 py-4 my-2 w-fit self-center rounded-md flex space-x-2 transition duration-200 bg-slate-100 hover:drop-shadow-md">

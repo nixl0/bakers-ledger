@@ -7,21 +7,36 @@ ledgerMultipleContainerS.forEach(ledgerMultipleContainer => {
     const ledgerMultipleLiS = ledgerMultipleContainer.querySelectorAll('.ledger-multiple-li')
     const ledgerMultipleSelected = ledgerMultipleContainer.querySelector('.ledger-multiple-selected')
 
-    // TODO parse ids on page load
     // on window load, select textcontent of li by the given id in ledgerMultipleIdInput
     window.addEventListener('load', () => {
-        const savedId = ledgerMultipleIdInput.value
+        const idInputsStr = ledgerMultipleIdInput.getAttribute('value')
+        console.log(idInputsStr)
 
-        console.log(savedId)
+        if (idInputsStr) {
+            ledgerMultipleDropdown.classList.toggle('hidden')
 
-        // ledgerMultipleLiS.forEach(li => {
-        //     if (li.value == savedId) {
-        //         const p = document.createElement('p')
-        //         const node = document.createTextNode(`${li.textContent}`)
-        //         p.appendChild(node)
-        //         ledgerMultipleSelected.appendChild(p)
-        //     }
-        // })
+
+            const idInputsArr = idInputsStr.split(',')
+
+
+            idInputsArr.forEach(idInput => {
+                ledgerMultipleLiS.forEach(li => {
+                    if (li.value == idInput) {
+                        const liValue = li.textContent
+
+                        li.classList.add('ledger-selected')
+                        li.classList.add('bg-slate-200')
+
+                        const p = document.createElement('p')
+                        const node = document.createTextNode(`${liValue}`)
+                        p.appendChild(node)
+                        console.log(p)
+                        ledgerMultipleSelected.appendChild(p)
+                    }
+                })
+            })
+        }
+
     })
 
     // on input click toggle dropdown
@@ -38,11 +53,19 @@ ledgerMultipleContainerS.forEach(ledgerMultipleContainer => {
 
             if (liId != null) {
 
-                if (li.classList.contains('ledger-selected')) { // when li is selected
+                if (li.classList.contains('ledger-selected')) { // when li is selected, remove elements
                     li.classList.remove('ledger-selected')
                     li.classList.remove('bg-slate-200')
 
-                    ledgerMultipleIdInput.setAttribute('value', idInput.replace(`${liId},`, ''))
+                    if (idInput.includes(`,${liId}`)) { // rest elements
+                        ledgerMultipleIdInput.setAttribute('value', idInput.replace(`,${liId}`, ''))
+                    }
+                    else if (idInput.includes(`${liId},`)) { // first element
+                        ledgerMultipleIdInput.setAttribute('value', idInput.replace(`${liId},`, ''))
+                    }
+                    else {
+                        ledgerMultipleIdInput.setAttribute('value', idInput.replace(`${liId}`, ''))
+                    }
 
                     const ps = ledgerMultipleSelected.querySelectorAll('p')
                     ps.forEach(p => {
@@ -51,17 +74,24 @@ ledgerMultipleContainerS.forEach(ledgerMultipleContainer => {
                         }
                     })
                 }
-                else { // when li is NOT selected
+                else { // when li is NOT selected, add elements
                     li.classList.add('ledger-selected')
                     li.classList.add('bg-slate-200')
 
-                    ledgerMultipleIdInput.setAttribute('value', `${idInput}${liId},`)
+                    if (idInput === '') { // first element
+                        ledgerMultipleIdInput.setAttribute('value', `${liId}`)
+                    }
+                    else { // rest elements
+                        ledgerMultipleIdInput.setAttribute('value', `${idInput},${liId}`)
+                    }
 
                     const p = document.createElement('p')
                     const node = document.createTextNode(`${liValue}`)
                     p.appendChild(node)
                     ledgerMultipleSelected.appendChild(p)
                 }
+
+                console.log(ledgerMultipleIdInput.getAttribute('value'))
             }
             else {
                 ledgerMultipleValueInput.value = 'ошибка. попробуйте ещё раз'

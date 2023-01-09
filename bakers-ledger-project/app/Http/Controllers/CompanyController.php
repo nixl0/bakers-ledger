@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\CompanyOwner;
 use App\Models\District;
 use App\Models\Legal;
 use App\Models\Owner;
@@ -41,6 +42,7 @@ class CompanyController extends Controller
     {
         $this->authorize('operate', Company::class);
 
+
         $validated = $request->validate([
             'user_id' => '',
             'number' => 'required',
@@ -49,13 +51,13 @@ class CompanyController extends Controller
             'legal_id' => 'required|numeric',
             'since' => 'required|numeric',
             'phone' => 'required',
-            'email' => 'required|email',
-            'owner_id' => ''
+            'email' => 'required|email'
         ]);
 
-        $validated['owner_id'] = explode(',', $validated['owner_id']);
+        $company = Company::create($validated);
 
-        Company::create($validated);
+        $owners = explode(',', $request['owner_id']);
+        $company->owners()->attach($owners);
 
         return redirect('/companies')->with('message', 'Предприятие успешно добавлено');
     }
@@ -87,6 +89,10 @@ class CompanyController extends Controller
         ]);
 
         $company->update($validated);
+
+        $owners = explode(',', $request['owner_id']);
+        $company->owners()->detach();
+        $company->owners()->attach($owners);
 
         return redirect('/companies')->with('message', 'Предприятие успешно изменено');
     }

@@ -27,7 +27,7 @@
                 @if (count($owner->companies))
                     <p>
                         @foreach ($owner->companies as $company)
-                            {{ $company->title }}
+                            {{ $company->title }},
                         @endforeach
                     </p>
                 @else
@@ -41,7 +41,7 @@
         </div>
 
         @can('operate', App\Models\Owner::class)
-            <x-edit-delete-entry href="/owners/{{$owner->id}}" />
+            <x-edit-delete-entry href="/owners/{{ $owner->id }}" />
         @endcan
     </div>
 @endsection
