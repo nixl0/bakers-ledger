@@ -15,12 +15,10 @@
             <div class="flex flex-col justify-between space-y-4 pr-4 text-right">
                 <p>название:</p>
                 <p>город:</p>
-                <p class="text-slate-300">автор:</p>
             </div>
             <div class="flex flex-col justify-between space-y-4 font-bold">
                 <p>{{ $district->title }}</p>
                 <p>{{ $district->settlement->title }}</p>
-                <p class="text-slate-300">{{ $district->user->name }}</p>
             </div>
         </div>
 

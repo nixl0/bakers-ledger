@@ -17,7 +17,6 @@
                 <p>имя:</p>
                 <p>отчество:</p>
                 <p>предприятия:</p>
-                <p class="text-slate-300">автор:</p>
             </div>
             <div class="flex flex-col justify-between space-y-4 font-bold">
                 <p>{{ $owner->lastname }}</p>
@@ -36,7 +35,6 @@
                     </p>
                 @endif
 
-                <p class="text-slate-300">{{ $owner->user->name }}</p>
             </div>
         </div>
 

@@ -36,7 +36,6 @@ class OwnerController extends Controller
         $this->authorize('operate', Owner::class);
 
         $validated = $request->validate([
-            'user_id' => '',
             'lastname' => 'required',
             'firstname' => 'required',
             'patronym' => 'required'

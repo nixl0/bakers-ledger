@@ -19,7 +19,6 @@ class OwnerFactory extends Factory
         $names = [fake('ru_RU')->lastName(), fake('ru_RU')->firstName(), fake('ru_RU')->firstName()];
 
         return [
-            'user_id' => 1,
             'lastname' => $names[0],
             'firstname' => $names[1],
             'patronym' => $names[2]

@@ -36,7 +36,6 @@ class DistrictController extends Controller
         $this->authorize('operate', District::class);
 
         $validated = $request->validate([
-            'user_id' => '',
             'title' => 'required',
             'settlement_id' => 'required'
         ]);

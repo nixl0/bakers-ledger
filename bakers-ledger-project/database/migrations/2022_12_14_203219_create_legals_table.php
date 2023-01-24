@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('legals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->string('title', 1023);
             $table->timestamps();
         });

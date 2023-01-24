@@ -27,8 +27,6 @@
                         {{-- settlement --}}
                         <x-colout colname="город" :goal="$district->settlement->title" />
 
-                        {{-- author --}}
-                        <x-colout-author :entity="$district" />
 
                     </div>
                 </a>

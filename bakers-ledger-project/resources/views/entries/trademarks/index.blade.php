@@ -36,6 +36,9 @@
                         {{-- ingredients --}}
                         <x-colout colname="ингредиенты" :goal="$trademark->ingredients" />
 
+                        {{-- price --}}
+                        <x-colout colname="цена" :goal="$trademark->price" />
+
                         {{-- author --}}
                         <x-colout-author :entity="$trademark" />
 

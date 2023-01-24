@@ -33,7 +33,6 @@ class LegalController extends Controller
         $this->authorize('operate', Legal::class);
 
         $validated = $request->validate([
-            'user_id' => '',
             'title' => 'required'
         ]);
 

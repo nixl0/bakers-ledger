@@ -65,8 +65,6 @@
                             </span>
                         </div>
 
-                        {{-- author --}}
-                        <x-colout-author :entity="$company" />
                     </div>
                 </a>
             @endforeach

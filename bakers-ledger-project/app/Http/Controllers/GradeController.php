@@ -33,7 +33,6 @@ class GradeController extends Controller
         $this->authorize('operate', Grade::class);
 
         $validated = $request->validate([
-            'user_id' => '',
             'title' => 'required'
         ]);
 

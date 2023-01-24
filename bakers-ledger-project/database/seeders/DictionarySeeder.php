@@ -15,24 +15,24 @@ class DictionarySeeder extends Seeder
     public function run()
     {
         // GRADE
-        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная цельнозерновая', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная 1-го сорта', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная 2-го сорта', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная высшего сорта хлебопекарская', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная крупчатка', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука гречневая', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука рисовая', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука овсяная', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука соевая', 'user_id' => 1]);
-        \App\Models\Grade::factory()->create(['title' => 'Мука миндальная', 'user_id' => 1]);
+        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная цельнозерновая']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная 1-го сорта']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная 2-го сорта']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная высшего сорта хлебопекарская']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука пшеничная крупчатка']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука гречневая']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука рисовая']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука овсяная']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука соевая']);
+        \App\Models\Grade::factory()->create(['title' => 'Мука миндальная']);
 
         // LEGAL
-        \App\Models\Legal::factory()->create(['title' => 'Общество с ограниченной ответственностью', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Акционерное общество', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Открытое акционерное общество', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Закрытое акционерное общество', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Частное предприятие', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Публичное акционерное общество', 'user_id' => 1]);
-        \App\Models\Legal::factory()->create(['title' => 'Кооператив', 'user_id' => 1]);
+        \App\Models\Legal::factory()->create(['title' => 'Общество с ограниченной ответственностью']);
+        \App\Models\Legal::factory()->create(['title' => 'Акционерное общество']);
+        \App\Models\Legal::factory()->create(['title' => 'Открытое акционерное общество']);
+        \App\Models\Legal::factory()->create(['title' => 'Закрытое акционерное общество']);
+        \App\Models\Legal::factory()->create(['title' => 'Частное предприятие']);
+        \App\Models\Legal::factory()->create(['title' => 'Публичное акционерное общество']);
+        \App\Models\Legal::factory()->create(['title' => 'Кооператив']);
     }
 }

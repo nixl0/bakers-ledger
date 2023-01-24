@@ -22,7 +22,8 @@ class TrademarkFactory extends Factory
             'company_id' => fake()->numberBetween(1, 2000),
             'grade_id' => fake()->numberBetween(1, 7),
             'ingredients' => implode(', ', fake()->words(12)),
-            'weight' => fake()->numberBetween(50, 4000)
+            'weight' => fake()->numberBetween(50, 4000),
+            'price' => fake()->numberBetween(1, 30)
         ];
     }
 }

@@ -43,7 +43,8 @@ class TrademarkController extends Controller
             'company_id' => 'required',
             'grade_id' => 'required',
             'ingredients' => 'required',
-            'weight' => 'required|integer'
+            'weight' => 'required|integer',
+            'price' => 'required|numeric'
         ]);
 
         Trademark::create($validated);
@@ -71,7 +72,8 @@ class TrademarkController extends Controller
             'company_id' => 'required',
             'grade_id' => 'required',
             'ingredients' => 'required',
-            'weight' => 'required|integer'
+            'weight' => 'required|integer',
+            'price' => 'required|numeric'
         ]);
 
         $trademark->update($validated);

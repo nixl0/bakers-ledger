@@ -24,8 +24,6 @@
                         {{-- title --}}
                         <x-colout colname="название" :goal="$legal->title" />
 
-                        {{-- author --}}
-                        <x-colout-author :entity="$legal" />
                     </div>
                 </a>
             @endforeach

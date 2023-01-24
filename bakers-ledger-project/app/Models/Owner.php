@@ -9,12 +9,7 @@ class Owner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'lastname', 'firstname', 'patronym'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = ['lastname', 'firstname', 'patronym'];
 
     public function companies()
     {

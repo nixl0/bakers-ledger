@@ -44,7 +44,6 @@ class CompanyController extends Controller
 
 
         $validated = $request->validate([
-            'user_id' => '',
             'number' => 'required',
             'title' => 'required',
             'district_id' => 'required|numeric',

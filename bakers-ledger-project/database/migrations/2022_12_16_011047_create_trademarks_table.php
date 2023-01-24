@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('ingredients');
             $table->unsignedInteger('weight');
+            $table->decimal('price');
             $table->timestamps();
         });
     }

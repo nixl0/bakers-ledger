@@ -33,7 +33,6 @@ class SettlementController extends Controller
         $this->authorize('operate', Settlement::class);
 
         $validated = $request->validate([
-            'user_id' => '',
             'title' => 'required'
         ]);
 

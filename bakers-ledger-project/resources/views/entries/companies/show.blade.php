@@ -22,7 +22,6 @@
                 <p>телефон:</p>
                 <p>email:</p>
                 <p>владельцы:</p>
-                <p class="text-slate-300">автор:</p>
             </div>
             <div class="flex flex-col justify-between space-y-4 font-bold">
                 <p>{{ $company->number }}</p>
@@ -46,7 +45,6 @@
                     </p>
                 @endif
 
-                <p class="text-slate-300">{{ $company->user->name }}</p>
             </div>
         </div>
 

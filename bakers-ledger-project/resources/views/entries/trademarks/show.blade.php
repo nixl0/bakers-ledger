@@ -18,6 +18,7 @@
                 <p>предприятие:</p>
                 <p>сорт муки:</p>
                 <p>ингредиенты:</p>
+                <p>цена:</p>
                 <p class="text-slate-300">автор:</p>
             </div>
             <div class="flex flex-col justify-between space-y-4 font-bold">
@@ -26,6 +27,7 @@
                 <p>{{ $trademark->company->title }}</p>
                 <p>{{ $trademark->grade->title }}</p>
                 <p>{{ $trademark->ingredients }}</p>
+                <p>{{ $trademark->price }}</p>
                 <p class="text-slate-300">{{ $trademark->user->name }}</p>
             </div>
         </div>

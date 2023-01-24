@@ -14,11 +14,9 @@
         <div class="border shadow-xl rounded-md p-8 flex flex-row justify-center">
             <div class="flex flex-col justify-between space-y-4 pr-4 text-right">
                 <p>название:</p>
-                <p class="text-slate-300">автор:</p>
             </div>
             <div class="flex flex-col justify-between space-y-4 font-bold">
                 <p>{{ $legal->title }}</p>
-                <p class="text-slate-300">{{ $legal->user->name }}</p>
             </div>
         </div>
 

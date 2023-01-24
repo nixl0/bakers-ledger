@@ -9,7 +9,7 @@ class Trademark extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'company_id', 'grade_id', 'ingredients', 'weight'];
+    protected $fillable = ['user_id', 'title', 'company_id', 'grade_id', 'ingredients', 'weight', 'price'];
 
     public function user()
     {

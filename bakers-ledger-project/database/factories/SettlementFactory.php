@@ -17,7 +17,6 @@ class SettlementFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
             'title' => fake()->unique()->city
         ];
     }
