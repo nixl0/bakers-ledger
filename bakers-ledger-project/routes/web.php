@@ -6,11 +6,13 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\UserController;
+use App\Models\Settlement;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/', function () {
+    return view('home');
+});
+
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/users', [UserController::class, 'store']);
@@ -30,83 +36,106 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-
-Route::get('/queries', function () {
-    return view('queries');
+Route::controller(QueryController::class)->group(function () {
+    Route::get('/queries', 'index');
+    Route::get('/queries/inner_join_1', 'inner_join_1');
+    Route::get('/queries/inner_join_2', 'inner_join_2');
+    Route::get('/queries/inner_join_3', 'inner_join_3');
+    Route::get('/queries/inner_join_4', 'inner_join_4');
+    Route::get('/queries/inner_join_5', 'inner_join_5');
+    Route::get('/queries/inner_join_6', 'inner_join_6');
+    Route::get('/queries/inner_join_7', 'inner_join_7');
+    Route::get('/queries/left_join', 'left_join');
+    Route::get('/queries/right_join', 'right_join');
+    Route::get('/queries/select_in_select', 'select_in_select');
 });
 
-Route::get('/', function () {
-    return view('home');
+Route::controller(SettlementController::class)->group(function () {
+    Route::get('/settlements/create', 'create')->middleware('auth');
+    Route::post('/settlements', 'store')->middleware('auth');
+    Route::get('/settlements', 'index');
+    Route::get('/settlements/{settlement}/edit', 'edit')->middleware('auth');
+    Route::put('/settlements/{settlement}', 'update')->middleware('auth');
+    Route::delete('/settlements/{settlement}', 'destroy')->middleware('auth');
+    Route::get('/settlements/{settlement}', 'show');
 });
 
-Route::get('/settlements/create', [SettlementController::class, 'create'])->middleware('auth');
-Route::post('/settlements', [SettlementController::class, 'store'])->middleware('auth');
-Route::get('/settlements', [SettlementController::class, 'index']);
-Route::get('/settlements/{settlement}/edit', [SettlementController::class, 'edit'])->middleware('auth');
-Route::put('/settlements/{settlement}', [SettlementController::class, 'update'])->middleware('auth');
-Route::delete('/settlements/{settlement}', [SettlementController::class, 'destroy'])->middleware('auth');
-Route::get('/settlements/{settlement}', [SettlementController::class, 'show']);
+Route::controller(LegalController::class)->group(function () {
+    Route::get('/legals/create', 'create')->middleware('auth');
+    Route::post('/legals', 'store')->middleware('auth');
+    Route::get('/legals', 'index');
+    Route::get('/legals/{legal}/edit', 'edit')->middleware('auth');
+    Route::put('/legals/{legal}', 'update')->middleware('auth');
+    Route::delete('/legals/{legal}', 'destroy')->middleware('auth');
+    Route::get('/legals/{legal}', 'show');
+});
 
-Route::get('/legals/create', [LegalController::class, 'create'])->middleware('auth');
-Route::post('/legals', [LegalController::class, 'store'])->middleware('auth');
-Route::get('/legals', [LegalController::class, 'index']);
-Route::get('/legals/{legal}/edit', [LegalController::class, 'edit'])->middleware('auth');
-Route::put('/legals/{legal}', [LegalController::class, 'update'])->middleware('auth');
-Route::delete('/legals/{legal}', [LegalController::class, 'destroy'])->middleware('auth');
-Route::get('/legals/{legal}', [LegalController::class, 'show']);
+Route::controller(GradeController::class)->group(function () {
+    Route::get('/grades/create', 'create')->middleware('auth');
+    Route::post('/grades', 'store')->middleware('auth');
+    Route::get('/grades', 'index');
+    Route::get('/grades/{grade}/edit', 'edit')->middleware('auth');
+    Route::put('/grades/{grade}', 'update')->middleware('auth');
+    Route::delete('/grades/{grade}', 'destroy')->middleware('auth');
+    Route::get('/grades/{grade}', 'show');
+});
 
-Route::get('/grades/create', [GradeController::class, 'create'])->middleware('auth');
-Route::post('/grades', [GradeController::class, 'store'])->middleware('auth');
-Route::get('/grades', [GradeController::class, 'index']);
-Route::get('/grades/{grade}/edit', [GradeController::class, 'edit'])->middleware('auth');
-Route::put('/grades/{grade}', [GradeController::class, 'update'])->middleware('auth');
-Route::delete('/grades/{grade}', [GradeController::class, 'destroy'])->middleware('auth');
-Route::get('/grades/{grade}', [GradeController::class, 'show']);
+Route::controller(DistrictController::class)->group(function () {
+    Route::get('/districts/create', 'create')->middleware('auth');
+    Route::post('/districts', 'store')->middleware('auth');
+    Route::get('/districts', 'index');
+    Route::get('/districts/{district}/edit', 'edit')->middleware('auth');
+    Route::put('/districts/{district}', 'update')->middleware('auth');
+    Route::delete('/districts/{district}', 'destroy')->middleware('auth');
+    Route::get('/districts/{district}', 'show');
+});
 
-Route::get('/districts/create', [DistrictController::class, 'create'])->middleware('auth');
-Route::post('/districts', [DistrictController::class, 'store'])->middleware('auth');
-Route::get('/districts', [DistrictController::class, 'index']);
-Route::get('/districts/{district}/edit', [DistrictController::class, 'edit'])->middleware('auth');
-Route::put('/districts/{district}', [DistrictController::class, 'update'])->middleware('auth');
-Route::delete('/districts/{district}', [DistrictController::class, 'destroy'])->middleware('auth');
-Route::get('/districts/{district}', [DistrictController::class, 'show']);
+Route::controller(CompanyController::class)->group(function () {
+    Route::get('/companies/create', 'create')->middleware('auth');
+    Route::post('/companies', 'store')->middleware('auth');
+    Route::get('/companies', 'index');
+    Route::get('/companies/{company}/edit', 'edit')->middleware('auth');
+    Route::put('/companies/{company}', 'update')->middleware('auth');
+    Route::delete('/companies/{company}', 'destroy')->middleware('auth');
+    Route::get('/companies/{company}', 'show');
+});
 
-Route::get('/companies/create', [CompanyController::class, 'create'])->middleware('auth');
-Route::post('/companies', [CompanyController::class, 'store'])->middleware('auth');
-Route::get('/companies', [CompanyController::class, 'index']);
-Route::get('/companies/{company}/edit', [CompanyController::class, 'edit'])->middleware('auth');
-Route::put('/companies/{company}', [CompanyController::class, 'update'])->middleware('auth');
-Route::delete('/companies/{company}', [CompanyController::class, 'destroy'])->middleware('auth');
-Route::get('/companies/{company}', [CompanyController::class, 'show']);
+Route::controller(OwnerController::class)->group(function () {
+    Route::get('/owners/create', 'create')->middleware('auth');
+    Route::post('/owners', 'store')->middleware('auth');
+    Route::get('/owners', 'index');
+    Route::get('/owners/{owner}/edit', 'edit')->middleware('auth');
+    Route::put('/owners/{owner}', 'update')->middleware('auth');
+    Route::delete('/owners/{owner}', 'destroy')->middleware('auth');
+    Route::get('/owners/{owner}', 'show');
+});
 
-Route::get('/owners/create', [OwnerController::class, 'create'])->middleware('auth');
-Route::post('/owners', [OwnerController::class, 'store'])->middleware('auth');
-Route::get('/owners', [OwnerController::class, 'index']);
-Route::get('/owners/{owner}/edit', [OwnerController::class, 'edit'])->middleware('auth');
-Route::put('/owners/{owner}', [OwnerController::class, 'update'])->middleware('auth');
-Route::delete('/owners/{owner}', [OwnerController::class, 'destroy'])->middleware('auth');
-Route::get('/owners/{owner}', [OwnerController::class, 'show']);
+Route::controller(ShopController::class)->group(function () {
+    Route::get('/shops/create', 'create')->middleware('auth');
+    Route::post('/shops', 'store')->middleware('auth');
+    Route::get('/shops', 'index');
+    Route::get('/shops/{shop}/edit', 'edit')->middleware('auth');
+    Route::put('/shops/{shop}', 'update')->middleware('auth');
+    Route::delete('/shops/{shop}', 'destroy')->middleware('auth');
+    Route::get('/shops/{shop}', 'show');
+});
 
-Route::get('/shops/create', [ShopController::class, 'create'])->middleware('auth');
-Route::post('/shops', [ShopController::class, 'store'])->middleware('auth');
-Route::get('/shops', [ShopController::class, 'index']);
-Route::get('/shops/{shop}/edit', [ShopController::class, 'edit'])->middleware('auth');
-Route::put('/shops/{shop}', [ShopController::class, 'update'])->middleware('auth');
-Route::delete('/shops/{shop}', [ShopController::class, 'destroy'])->middleware('auth');
-Route::get('/shops/{shop}', [ShopController::class, 'show']);
+Route::controller(DeliveryController::class)->group(function () {
+    Route::get('/deliveries/create', 'create')->middleware('auth');
+    Route::post('/deliveries', 'store')->middleware('auth');
+    Route::get('/deliveries', 'index');
+    Route::get('/deliveries/{delivery}/edit', 'edit')->middleware('auth');
+    Route::put('/deliveries/{delivery}', 'update')->middleware('auth');
+    Route::delete('/deliveries/{delivery}', 'destroy')->middleware('auth');
+    Route::get('/deliveries/{delivery}', 'show');
+});
 
-Route::get('/deliveries/create', [DeliveryController::class, 'create'])->middleware('auth');
-Route::post('/deliveries', [DeliveryController::class, 'store'])->middleware('auth');
-Route::get('/deliveries', [DeliveryController::class, 'index']);
-Route::get('/deliveries/{delivery}/edit', [DeliveryController::class, 'edit'])->middleware('auth');
-Route::put('/deliveries/{delivery}', [DeliveryController::class, 'update'])->middleware('auth');
-Route::delete('/deliveries/{delivery}', [DeliveryController::class, 'destroy'])->middleware('auth');
-Route::get('/deliveries/{delivery}', [DeliveryController::class, 'show']);
-
-Route::get('/trademarks/create', [TrademarkController::class, 'create'])->middleware('auth');
-Route::post('/trademarks', [TrademarkController::class, 'store'])->middleware('auth');
-Route::get('/trademarks', [TrademarkController::class, 'index']);
-Route::get('/trademarks/{trademark}/edit', [TrademarkController::class, 'edit'])->middleware('auth');
-Route::put('/trademarks/{trademark}', [TrademarkController::class, 'update'])->middleware('auth');
-Route::delete('/trademarks/{trademark}', [TrademarkController::class, 'destroy'])->middleware('auth');
-Route::get('/trademarks/{trademark}', [TrademarkController::class, 'show']);
+Route::controller(TrademarkController::class)->group(function () {
+    Route::get('/trademarks/create', 'create')->middleware('auth');
+    Route::post('/trademarks', 'store')->middleware('auth');
+    Route::get('/trademarks', 'index');
+    Route::get('/trademarks/{trademark}/edit', 'edit')->middleware('auth');
+    Route::put('/trademarks/{trademark}', 'update')->middleware('auth');
+    Route::delete('/trademarks/{trademark}', 'destroy')->middleware('auth');
+    Route::get('/trademarks/{trademark}', 'show');
+});
