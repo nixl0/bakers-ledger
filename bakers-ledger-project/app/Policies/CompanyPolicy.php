@@ -9,10 +9,10 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CompanyPolicy
 {
     use HandlesAuthorization;
-    
+
     public function operate(User $user)
     {
-        if ($user->role == User::IS_ADMIN || $user->role == User::IS_MANAGER) {
+        if ($user->role == User::IS_ADMIN) {
             return Response::allow();
         }
 

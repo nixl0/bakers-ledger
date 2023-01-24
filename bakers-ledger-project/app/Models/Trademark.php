@@ -26,8 +26,8 @@ class Trademark extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function deliveries()
+    public function goods()
     {
-        return $this->hasMany(Delivery::class);
+        return $this->hasMany(Goods::class);
     }
 }

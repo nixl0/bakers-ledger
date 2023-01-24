@@ -14,6 +14,8 @@ class DeliverySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Delivery::factory(10000)->create();
+        \App\Models\Delivery::factory(10000)
+            ->has(\App\Models\Goods::factory()->count(4))
+            ->create();
     }
 }

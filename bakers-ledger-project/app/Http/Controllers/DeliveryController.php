@@ -28,8 +28,7 @@ class DeliveryController extends Controller
         $this->authorize('create', Delivery::class);
 
         return view('entries.deliveries.create', [
-            'shops' => Shop::all(),
-            'trademarks' => Trademark::all()
+            'shops' => Shop::all()
         ]);
     }
 
@@ -40,9 +39,6 @@ class DeliveryController extends Controller
         $validated = $request->validate([
             'user_id' => '',
             'shop_id' => 'required',
-            'trademark_id' => 'required',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
             'date' => 'required|date'
         ]);
 
@@ -57,8 +53,7 @@ class DeliveryController extends Controller
 
         return view('entries.deliveries.edit', [
             'delivery' => $delivery,
-            'shops' => Shop::all(),
-            'trademarks' => Trademark::all()
+            'shops' => Shop::all()
         ]);
     }
 
@@ -68,9 +63,6 @@ class DeliveryController extends Controller
 
         $validated = $request->validate([
             'shop_id' => 'required',
-            'trademark_id' => 'required',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
             'date' => 'required|date'
         ]);
 

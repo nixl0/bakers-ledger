@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Delivery>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Goods>
  */
-class DeliveryFactory extends Factory
+class GoodsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,9 @@ class DeliveryFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'shop_id' => fake()->numberBetween(1, 5000),
-            'date' => fake('ru_RU')->dateTimeBetween('-20 years', '-2 years')
+            'delivery_id' => fake()->numberBetween(1, 10000),
+            'trademark_id' => fake()->numberBetween(1, 6000),
+            'quantity' => fake()->numberBetween(2, 10) * 10,
         ];
     }
 }

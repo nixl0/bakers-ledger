@@ -90,6 +90,11 @@
                     Поставки
                 </span>
             </a>
+            <a href="/goods" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">
+                <span class="">
+                    Товары
+                </span>
+            </a>
             <a href="/trademarks" class="m-2 p-2 rounded-md transition duration-200 hover:bg-slate-100">
                 <span class="">
                     Торговые марки

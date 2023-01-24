@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\OwnerController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\UserController;
-use App\Models\Settlement;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +120,16 @@ Route::controller(ShopController::class)->group(function () {
     Route::get('/shops/{shop}', 'show');
 });
 
+Route::controller(TrademarkController::class)->group(function () {
+    Route::get('/trademarks/create', 'create')->middleware('auth');
+    Route::post('/trademarks', 'store')->middleware('auth');
+    Route::get('/trademarks', 'index');
+    Route::get('/trademarks/{trademark}/edit', 'edit')->middleware('auth');
+    Route::put('/trademarks/{trademark}', 'update')->middleware('auth');
+    Route::delete('/trademarks/{trademark}', 'destroy')->middleware('auth');
+    Route::get('/trademarks/{trademark}', 'show');
+});
+
 Route::controller(DeliveryController::class)->group(function () {
     Route::get('/deliveries/create', 'create')->middleware('auth');
     Route::post('/deliveries', 'store')->middleware('auth');
@@ -130,12 +140,12 @@ Route::controller(DeliveryController::class)->group(function () {
     Route::get('/deliveries/{delivery}', 'show');
 });
 
-Route::controller(TrademarkController::class)->group(function () {
-    Route::get('/trademarks/create', 'create')->middleware('auth');
-    Route::post('/trademarks', 'store')->middleware('auth');
-    Route::get('/trademarks', 'index');
-    Route::get('/trademarks/{trademark}/edit', 'edit')->middleware('auth');
-    Route::put('/trademarks/{trademark}', 'update')->middleware('auth');
-    Route::delete('/trademarks/{trademark}', 'destroy')->middleware('auth');
-    Route::get('/trademarks/{trademark}', 'show');
+Route::controller(GoodsController::class)->group(function () {
+    Route::get('/goods/create', 'create')->middleware('auth');
+    Route::post('/goods', 'store')->middleware('auth');
+    Route::get('/goods', 'index');
+    Route::get('/goods/{goods_instance}/edit', 'edit')->middleware('auth');
+    Route::put('/goods/{goods_instance}', 'update')->middleware('auth');
+    Route::delete('/goods/{goods_instance}', 'destroy')->middleware('auth');
+    Route::get('/goods/{goods_instance}', 'show');
 });

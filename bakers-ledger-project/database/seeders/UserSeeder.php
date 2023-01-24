@@ -47,11 +47,11 @@ class UserSeeder extends Seeder
             'password' => bcrypt('*nvKt2U326Er') // TODO not secure
         ]);
 
-        // dummy_deliverer
+        // dummy_editor
         \App\Models\User::factory()->create([
-            'role' => User::IS_DELIVERER,
-            'name' => 'dummy_deliverer',
-            'email' => 'deliverer@ledger.com',
+            'role' => User::IS_EDITOR,
+            'name' => 'dummy_editor',
+            'email' => 'editor@ledger.com',
             'password' => bcrypt('1qK!Nsc975WQ') // TODO not secure
         ]);
     }

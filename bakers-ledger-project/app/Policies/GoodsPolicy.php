@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Delivery;
+use App\Models\Goods;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
-class DeliveryPolicy
+class GoodsPolicy
 {
     use HandlesAuthorization;
 
@@ -24,12 +24,12 @@ class DeliveryPolicy
         return Response::deny('Недостаточно прав.');
     }
 
-    public function update(User $user, Delivery $delivery)
+    public function update(User $user, Goods $goods_instance)
     {
         if (
             $user->role == User::IS_ADMIN ||
             $user->role == User::IS_MANAGER ||
-            $user->role == User::IS_EDITOR  && (auth()->check() && $delivery->user_id === $user->id)
+            $user->role == User::IS_EDITOR && (auth()->check() && $goods_instance->user_id === $user->id)
         ) {
             return Response::allow();
         }

@@ -29,35 +29,6 @@
                 </p>
             @enderror
 
-            {{-- trademark_id --}}
-            <x-input-box-search colname="торговая марка" colname_form="trademark_id" input_value="{{ $delivery->trademark->id }}">
-                @foreach ($trademarks as $trademark)
-                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
-                        value="{{ $trademark->id }}">{{ $trademark->title }}, {{ $trademark->company->title }}</li>
-                @endforeach
-            </x-input-box-search>
-            @error('trademark_id')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
-            {{-- price --}}
-            <x-input-box colname="цена" colname_form="price" input_value="{{ $delivery->price }}" />
-            @error('price')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
-            {{-- quantity --}}
-            <x-input-box colname="количество" colname_form="quantity" input_value="{{ $delivery->quantity }}" />
-            @error('quantity')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
             {{-- date --}}
             <x-input-box colname="дата" colname_form="date" input_value="{{ $delivery->date }}" />
             @error('date')

@@ -36,7 +36,5 @@ class RestSeeder extends Seeder
             ->create();
 
         \App\Models\Trademark::factory(6000)->create();
-
-        \App\Models\Delivery::factory(20000)->create();
     }
 }

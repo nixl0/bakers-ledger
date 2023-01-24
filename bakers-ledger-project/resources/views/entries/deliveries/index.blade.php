@@ -27,21 +27,6 @@
                         {{-- shop title --}}
                         <x-colout colname="название магазина" :goal="$delivery->shop->title" />
 
-                        {{-- trademark title --}}
-                        <x-colout colname="торговая марка" :goal="$delivery->trademark->title" />
-
-                        {{-- trademark company legal title --}}
-                        <x-colout colname="тип собственности" :goal="$delivery->trademark->company->legal->title" />
-
-                        {{-- trademark company title --}}
-                        <x-colout colname="предприятие" :goal="$delivery->trademark->company->title" />
-
-                        {{-- price --}}
-                        <x-colout colname="цена" :goal="$delivery->price" />
-
-                        {{-- quantity --}}
-                        <x-colout colname="количество" :goal="$delivery->quantity" />
-
                         {{-- date --}}
                         <x-colout colname="дата" :goal="$delivery->date" />
 

@@ -9,7 +9,7 @@ class Delivery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'shop_id', 'trademark_id', 'price', 'quantity', 'date'];
+    protected $fillable = ['user_id', 'shop_id', 'date'];
 
     public function user()
     {
@@ -21,8 +21,8 @@ class Delivery extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function trademark()
+    public function goods()
     {
-        return $this->belongsTo(Trademark::class);
+        return $this->hasMany(Goods::class);
     }
 }

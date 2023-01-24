@@ -1,6 +1,6 @@
 @extends('base')
 
-@props(['shops', 'trademarks'])
+@props(['shops'])
 
 @section('title')
     Добавить поставку
@@ -25,35 +25,6 @@
                 @endforeach
             </x-input-box-search>
             @error('shop_id')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
-            {{-- trademark_id --}}
-            <x-input-box-search colname="торговая марка" colname_form="trademark_id" input_value="{{ old('trademark_id') }}">
-                @foreach ($trademarks as $trademark)
-                    <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
-                        value="{{ $trademark->id }}">{{ $trademark->title }}, {{ $trademark->company->title }}</li>
-                @endforeach
-            </x-input-box-search>
-            @error('trademark_id')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
-            {{-- price --}}
-            <x-input-box colname="цена" colname_form="price" input_value="{{ old('price') }}" />
-            @error('price')
-                <p class="text-red-500">
-                    {{ $message }}
-                </p>
-            @enderror
-
-            {{-- quantity --}}
-            <x-input-box colname="количество" colname_form="quantity" input_value="{{ old('quantity') }}" />
-            @error('quantity')
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
