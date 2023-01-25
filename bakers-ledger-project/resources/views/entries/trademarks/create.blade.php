@@ -60,7 +60,7 @@
             @enderror
 
             {{-- weight --}}
-            <x-input-box colname="вес" colname_form="weight" input_value="{{ old('weight') }}" />
+            <x-input-box colname="вес" colname_form="weight" input_value="{{ old('weight') }}" type="number" />
             @error('weight')
                 <p class="text-red-500">
                     {{ $message }}
@@ -68,7 +68,7 @@
             @enderror
 
             {{-- price --}}
-            <x-input-box colname="цена" colname_form="price" input_value="{{ old('price') }}" />
+            <x-input-box colname="цена" colname_form="price" input_value="{{ old('price') }}" type="number" />
             @error('price')
                 <p class="text-red-500">
                     {{ $message }}

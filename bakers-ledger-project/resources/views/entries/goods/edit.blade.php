@@ -17,10 +17,10 @@
             <h1 class="text-2xl font-bold text-center">Изменить товар</h1>
 
             {{-- delivery_id --}}
-            <x-input-box-search colname="поставка" colname_form="delivery_id" input_value="{{ $goods_instance->id }}">
+            <x-input-box-search colname="поставка" colname_form="delivery_id" input_value="{{ $goods_instance->delivery->id }}">
                 @foreach ($deliveries as $delivery)
                     <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
-                        value="{{ $delivery->id }}">{{ $delivery->date }}<br>{{ $delivery->shop->title }}, {{ $delivery->company->title }}</li>
+                        value="{{ $delivery->id }}">{{ $delivery->date }} <br>{{ $delivery->shop->title }}, {{ $delivery->shop->number }}</li>
                 @endforeach
             </x-input-box-search>
             @error('delivery_id')
@@ -30,7 +30,7 @@
             @enderror
 
             {{-- trademark_id --}}
-            <x-input-box-search colname="торговая марка" colname_form="trademark_id" input_value="{{ $delivery->trademark->id }}">
+            <x-input-box-search colname="торговая марка" colname_form="trademark_id" input_value="{{ $goods_instance->trademark->id }}">
                 @foreach ($trademarks as $trademark)
                     <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
                         value="{{ $trademark->id }}">{{ $trademark->title }}, {{ $trademark->company->title }}</li>
@@ -43,7 +43,7 @@
             @enderror
 
             {{-- quantity --}}
-            <x-input-box colname="количество" colname_form="quantity" input_value="{{ $delivery->quantity }}" />
+            <x-input-box colname="количество" colname_form="quantity" input_value="{{ $goods_instance->quantity }}" type="number" />
             @error('quantity')
                 <p class="text-red-500">
                     {{ $message }}

@@ -21,7 +21,7 @@
             <x-input-box-search colname="поставка" colname_form="delivery_id" input_value="{{ old('delivery_id') }}">
                 @foreach ($deliveries as $delivery)
                     <li class="ledger-search-li cursor-pointer p-2 m-1 rounded-md transition duration-200 hover:bg-slate-300"
-                        value="{{ $delivery->id }}">{{ $delivery->date }}<br>{{ $delivery->shop->title }}, {{ $delivery->company->title }}</li>
+                        value="{{ $delivery->id }}">{{ $delivery->date }} <br>{{ $delivery->shop->title }}, {{ $delivery->shop->number }}</li>
                 @endforeach
             </x-input-box-search>
             @error('delivery_id')
@@ -44,7 +44,7 @@
             @enderror
 
             {{-- quantity --}}
-            <x-input-box colname="количество" colname_form="quantity" input_value="{{ old('quantity') }}" />
+            <x-input-box colname="количество" colname_form="quantity" input_value="{{ old('quantity') }}" type="number" />
             @error('quantity')
                 <p class="text-red-500">
                     {{ $message }}

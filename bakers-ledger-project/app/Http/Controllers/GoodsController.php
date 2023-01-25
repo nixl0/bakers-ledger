@@ -51,7 +51,7 @@ class GoodsController extends Controller
 
     public function edit(Goods $goods_instance)
     {
-        $this->authorize('update', Goods::class);
+        $this->authorize('update', $goods_instance);
 
         return view('entries.goods.edit', [
             'goods_instance' => $goods_instance,
@@ -62,7 +62,7 @@ class GoodsController extends Controller
 
     public function update(Request $request, Goods $goods_instance)
     {
-        $this->authorize('update', Goods::class);
+        $this->authorize('update', $goods_instance);
 
         $validated = $request->validate([
             'delivery_id' => 'required',

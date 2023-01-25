@@ -30,7 +30,7 @@
             @enderror
 
             {{-- date --}}
-            <x-input-box colname="дата" colname_form="date" input_value="{{ $delivery->date }}" />
+            <x-input-box colname="дата" colname_form="date" input_value="{{ $delivery->date }}" type="date" />
             @error('date')
                 <p class="text-red-500">
                     {{ $message }}

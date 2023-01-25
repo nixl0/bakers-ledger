@@ -60,7 +60,7 @@
                 @enderror
 
                 {{-- since --}}
-                <x-input-box colname="год основания" colname_form="since" input_value="{{ $company->since }}" />
+                <x-input-box colname="год основания" colname_form="since" input_value="{{ $company->since }}" type="number" />
                 @error('since')
                     <p class="text-red-500">
                         {{ $message }}
@@ -76,7 +76,7 @@
                 @enderror
 
                 {{-- email --}}
-                <x-input-box colname="email" colname_form="email" input_value="{{ $company->email }}" />
+                <x-input-box colname="email" colname_form="email" input_value="{{ $company->email }}" type="email" />
                 @error('email')
                     <p class="text-red-500">
                         {{ $message }}
