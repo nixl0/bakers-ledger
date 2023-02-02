@@ -24,16 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([RestSeeder::class]);
 
         // calling additional seeder to fill only the Deliveries table
-        // $this->call([DeliverySeeder::class]);
-
-
-
-
-
-
-
-
-
+        $this->call([DeliverySeeder::class]);
 
         // \App\Models\User::factory(10)->create();
 

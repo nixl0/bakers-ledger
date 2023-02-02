@@ -48,6 +48,12 @@ Route::controller(QueryController::class)->group(function () {
     Route::get('/queries/left_join', 'left_join');
     Route::get('/queries/right_join', 'right_join');
     Route::get('/queries/select_in_select', 'select_in_select');
+    Route::get('/queries/aggregate_no_condition', 'aggregate_no_condition');
+    Route::get('/queries/aggregate_condition_data', 'aggregate_condition_data');
+    Route::get('/queries/aggregate_condition_group', 'aggregate_condition_group');
+    Route::get('/queries/aggregate_condition_both', 'aggregate_condition_both');
+    Route::get('/queries/aggregate_mishmash', 'aggregate_mishmash');
+    Route::get('/queries/aggregate_subquery', 'aggregate_subquery');
 });
 
 Route::controller(SettlementController::class)->group(function () {
